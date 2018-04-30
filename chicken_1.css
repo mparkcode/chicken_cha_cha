@@ -1,0 +1,82 @@
+td{
+  width: 100px;
+  height: 100px;
+  /*border: 1px solid black;*/
+  border-radius: 50px;
+  text-align: center;
+}
+
+img{
+  vertical-align: middle;
+}
+
+.parent{
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.hidden{
+  display: none;
+}
+
+.cover{
+  background: linear-gradient(#FF5F6D, #FFC371);
+}
+
+.img-size{
+  width: 80px;
+  height: 80px;
+}
+
+.player1{
+  border: 2px solid red;
+}
+
+.player1-active{
+  border: 2px solid red;
+  background: pink;
+}
+
+.player2{
+  border: 2px solid blue;
+}
+
+.player2-active{
+  border: 2px solid blue;
+  background: #87cefa;
+}
+
+.player1-target {
+  background-size: cover;
+  animation: player1-pulse 1s infinite;
+}
+
+.player2-target {
+  background-size: cover;
+  animation: player2-pulse 1s infinite;
+}
+
+@keyframes player1-pulse {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: pink;
+  }
+  100%{
+    background-color: white;
+  }
+}
+
+@keyframes player2-pulse {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: #87cefa;
+  }
+  100%{
+    background-color: white;
+  }
+}
