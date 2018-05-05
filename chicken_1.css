@@ -38,6 +38,11 @@ img{
   background: pink;
 }
 
+.player1-target {
+  background-size: cover;
+  animation: player1-pulse 1s infinite;
+}
+
 .player2{
   border: 2px solid blue;
 }
@@ -47,15 +52,13 @@ img{
   background: #87cefa;
 }
 
-.player1-target {
-  background-size: cover;
-  animation: player1-pulse 1s infinite;
-}
-
 .player2-target {
   background-size: cover;
   animation: player2-pulse 1s infinite;
 }
+
+
+
 
 @keyframes player1-pulse {
   0% {
@@ -80,3 +83,5 @@ img{
     background-color: white;
   }
 }
+
+
