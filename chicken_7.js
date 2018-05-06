@@ -86,30 +86,46 @@ Player1 = {
   active: true,
   lives: 2,
   position: 0,
-  target: function(){
-    if(this.position + 1 === Player2.position && this.position + 1 === 23){
-      return 0;
-    } else if (this.position + 1 === Player2.position){
-      return this.position + 2;
-    } else if (this.position === 23 && Player2.position === 0){
-        return 1;
-    } else if (this.position === 23){
-        return 0;
-    } else {
-      return this.position + 1;
-    }
-  },
+  target: 1,
+  // target: function(){
+  //   if(this.position === 20 && document.getElementById('square-21').classList.contains("occupied") && document.getElementById('square-22').classList.contains("occupied") && document.getElementById('square-23').classList.contains("occupied")){
+  //     return 0;
+  //   } else if(this.position === 21 && document.getElementById('square-22').classList.contains("occupied") && document.getElementById('square-23').classList.contains("occupied") && document.getElementById('square-0').classList.contains("occupied")){
+  //     return 1;
+  //   } else if(this.position === 22 && document.getElementById('square-23').classList.contains("occupied") && document.getElementById('square-0').classList.contains("occupied") && document.getElementById('square-1').classList.contains("occupied")){
+  //     return 2;
+  //   } else if(this.position === 23 && document.getElementById('square-0').classList.contains("occupied") && document.getElementById('square-1').classList.contains("occupied") && document.getElementById('square-2').classList.contains("occupied")){
+  //     return 3;
+  //   } else if(document.getElementById('square-'+(this.position+1)).classList.contains("occupied") && document.getElementById('square-'+(this.position+2)).classList.contains("occupied") && document.getElementById('square-'+(this.position+3)).classList.contains("occupied")){
+  //     return this.position + 4;
+  //   } else if(this.position === 21 && document.getElementById('square-22').classList.contains("occupied") && document.getElementById('square-23').classList.contains("occupied")){
+  //     return 0;
+  //   } else if(this.position === 22 && document.getElementById('square-23').classList.contains("occupied") && document.getElementById('square-0').classList.contains("occupied")){
+  //     return 1;
+  //   } else if(this.position === 23 && document.getElementById('square-0').classList.contains("occupied") && document.getElementById('square-1').classList.contains("occupied")){
+  //     return 2;
+  //   } else if(document.getElementById('square-'+(this.position+1)).classList.contains("occupied") && document.getElementById('square-'+(this.position+2)).classList.contains("occupied")){
+  //     return this.position + 3;
+  //   } else if(this.position === 22 && document.getElementById('square-'+(this.position+1)).classList.contains("occupied")){
+  //     return 0;
+  //   } else if(this.position === 23 && document.getElementById('square-0').classList.contains("occupied")){
+  //     return 1;
+  //   } else if(document.getElementById('square-'+(this.position+1)).classList.contains("occupied")){
+  //     return this.position + 2;
+  //   } else if(this.position === 23){
+  //     return 0;
+  //   } else {
+  //     return this.position + 1;
+  //   }
+  // },
   currentPosition: function(){
     return document.getElementById('square-' + this.position);
   },
   targetPosition: function(){
-    return document.getElementById('square-' + this.target());
-  }
+    return document.getElementById('square-' + this.target);
+  },
 };
 
-if(document.getElementById('square-0').classList.contains('player1-active')){
-  console.log("hi!");
-}
 
 Player2 = {
   active: false,
@@ -141,26 +157,29 @@ Player2 = {
 
 
 
+
+
+
 var currentPlayer = Player1;
 var nonCurrentPlayer = Player2;
 
 currentPlayer.currentPosition().classList.remove('player1');
 currentPlayer.currentPosition().classList.add('player1-active');
-currentPlayer.targetPosition().classList.add('player1-target')
+currentPlayer.targetPosition().classList.add('player1-target');
 
 currentPlayer.currentPosition().classList.add('occupied');
-nonCurrentPlayer.currentPosition().classList.add('occupied');
+currentPlayer.currentPosition().classList.add('current-player');
+// nonCurrentPlayer.currentPosition().classList.add('occupied');
 
 
 for (var i = 0; i < hiddenPics.length; i++){
   if(hiddenPics[i].classList.contains('cover')){
     hiddenPics[i].addEventListener('click', function(){
       let piece = this;
-          setTimeout(function(){
-            console.log(piece);
-          piece.classList.add('cover');
-          piece.firstChild.classList.add('hidden');
-        },1000);
+      setTimeout(function(){
+        piece.classList.add('cover');
+        piece.firstChild.classList.add('hidden');
+      },1000);
     })
   }
 }
@@ -168,15 +187,15 @@ for (var i = 0; i < hiddenPics.length; i++){
 for (var i = 0; i < hiddenPics.length; i++) {
   if(hiddenPics[i].classList.contains('cover')){
     hiddenPics[i].addEventListener('click', function(){
-      console.log(this);
       this.classList.remove('cover');
       this.firstChild.classList.remove('hidden');
       
       if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
 
-        //Removes the player color on current game piece
+        //Removes the player color & current-player class on current game piece
         if(currentPlayer === Player1){
           currentPlayer.currentPosition().classList.remove('player1-active');
+          currentPlayer.currentPosition().classList.remove('current-player');
           currentPlayer.targetPosition().classList.remove('player1-target');
         } else if(currentPlayer === Player2){
           currentPlayer.currentPosition().classList.remove('player2-active');
@@ -184,29 +203,73 @@ for (var i = 0; i < hiddenPics.length; i++) {
         }
 
         //reduces nonCurrentPlayer lives by 1 if jumped over
-        if(currentPlayer.target() === 0 && currentPlayer.position === 22){
+        if(currentPlayer.target === 0 && currentPlayer.position === 22){
           nonCurrentPlayer.lives -=1;
-        } else if (currentPlayer.target() === 1 && currentPlayer.position === 23){
+        } else if (currentPlayer.target === 1 && currentPlayer.position === 23){
           nonCurrentPlayer.lives -=1;
-        } else if (currentPlayer.target() === currentPlayer.position + 2){
+        } else if (currentPlayer.target === currentPlayer.position + 2){
           nonCurrentPlayer.lives -=1;
         }
 
         //changes the current position for next move
-        currentPlayer.position = currentPlayer.target();
+        currentPlayer.position = currentPlayer.target;
         
-        //Logic to change target position
-
-         //adds the player color to the current position
+        //adds the player color & current-player class to the current position
         if(currentPlayer === Player1){
           currentPlayer.currentPosition().classList.add('player1-active');
-          currentPlayer.targetPosition().classList.add('player1-target');
+          currentPlayer.currentPosition().classList.add('current-player');
         } else if(currentPlayer === Player2){
           currentPlayer.currentPosition().classList.add('player2-active');
           currentPlayer.targetPosition().classList.add('player2-target');
         }
         
-        //handles the occupied class
+        //changes the target position
+          if(currentPlayer.position === 20 && document.getElementById("square-21").classList.contains("non-current-player") && document.getElementById("square-22").classList.contains("non-current-player") && document.getElementById("square-23").classList.contains("non-current-player")){
+            currentPlayer.target = 0;
+          } else if(currentPlayer.position === 21 && document.getElementById("square-22").classList.contains("non-current-player") && document.getElementById("square-23").classList.contains("non-current-player") && document.getElementById("square-0").classList.contains("non-current-player")){
+            currentPlayer.target = 1;
+          } else if(currentPlayer.position === 21 && document.getElementById("square-22").classList.contains("non-current-player") && document.getElementById("square-23").classList.contains("non-current-player")){
+            currentPlayer.target = 0;
+          } else if(currentPlayer.position === 22 && document.getElementById("square-23").classList.contains("non-current-player") && document.getElementById("square-0").classList.contains("non-current-player") && document.getElementById("square-1").classList.contains("non-current-player")){
+            currentPlayer.target = 2;
+          } else if(currentPlayer.position === 22 && document.getElementById("square-23").classList.contains("non-current-player") && document.getElementById("square-0").classList.contains("non-current-player")){
+            currentPlayer.target = 1;
+          } else if(currentPlayer.position === 22 && document.getElementById("square-23").classList.contains("non-current-player")){
+            currentPlayer.target = 0;
+          } else if(currentPlayer.position === 23 && document.getElementById("square-0").classList.contains("non-current-player") && document.getElementById("square-1").classList.contains("non-current-player") && document.getElementById("square-2").classList.contains("non-current-player")){
+            currentPlayer.target = 3;
+          } else if(currentPlayer.position === 23 && document.getElementById("square-0").classList.contains("non-current-player") && document.getElementById("square-1").classList.contains("non-current-player")){
+            currentPlayer.target = 2;
+          } else if(currentPlayer.position === 23 && document.getElementById("square-0").classList.contains("non-current-player")){
+            currentPlayer.target = 1;
+          } else if(!(currentPlayer.position === 23) && document.getElementById("square-" + (currentPlayer.position + 1)).classList.contains("non-current-player") && document.getElementById("square-" + (currentPlayer.position + 2)).classList.contains("non-current-player") && document.getElementById("square-" + (currentPlayer.position + 3)).classList.contains("non-current-player")){
+            currentPlayer.target += 4;
+          } else if (!(currentPlayer.position === 23) && document.getElementById("square-" + (currentPlayer.position + 1)).classList.contains("non-current-player") && document.getElementById("square-" + (currentPlayer.position + 2)).classList.contains("non-current-player")){
+            currentPlayer.target += 3;
+          } else if (!(currentPlayer.position === 23) && document.getElementById("square-" + (currentPlayer.position + 1)).classList.contains("non-current-player")){
+            currentPlayer.target += 2;
+          } else if(currentPlayer.position === 23){
+            currentPlayer.target = 0;
+          } else {
+            currentPlayer.target += 1;
+          }
+        
+        
+        console.log(currentPlayer.targetPosition());
+        
+        
+        //adds colors to the target
+        if(currentPlayer === Player1){
+          currentPlayer.targetPosition().classList.add('player1-target');
+        } else if(currentPlayer === Player2){
+          currentPlayer.currentPosition().classList.add('player2-active');
+          currentPlayer.targetPosition().classList.add('player2-target');
+        }
+          
+          
+         
+        
+        // handles the occupied class
         for(var i = 0; i<displayCards.length; i++){
           if(displayCards[i].classList.contains("player1-active") || displayCards[i].classList.contains("player1") || displayCards[i].classList.contains("player2-active") || displayCards[i].classList.contains("player2")){
             displayCards[i].classList.add("occupied");
@@ -216,10 +279,6 @@ for (var i = 0; i < hiddenPics.length; i++) {
         }
 
 
-
-        // console.log(currentPlayer.currentPosition());
-        // console.log(currentPlayer.targetPosition());
-        // console.log(currentPlayer.target());
        }else if (this.firstChild.src !== currentPlayer.targetPosition().firstChild.src){
 
         //changes the current player in case of incorrect guess
@@ -243,12 +302,71 @@ for (var i = 0; i < hiddenPics.length; i++) {
           nonCurrentPlayer.targetPosition().classList.remove('player2-target');
         }      
     }
-    // this.addEventListener('mousemove', function(){
-    //   this.classList.add('cover');
-    //   this.firstChild.classList.add('hidden');
-    // })
   })
 }
 }
 
 
+
+
+// var positionPlusOne;
+//         var positionPlusTwo;
+//         var positionPlusThree;
+        
+//         if(currentPlayer.position === 23){
+//           positionPlusOne = document.getElementById("square-0");
+//         } else{
+//           positionPlusOne = document.getElementById("square-" + (currentPlayer.position + 1));
+//         }
+        
+//         if(currentPlayer.position === 22){
+//           positionPlusTwo = document.getElementById("square-0");
+//         } else if(currentPlayer.position === 23){
+//           positionPlusTwo = document.getElementById("square-1");
+//         } else {
+//           positionPlusTwo = document.getElementById("square-" + (currentPlayer.position + 2));
+//         }
+        
+//         if(currentPlayer.position === 21){
+//           positionPlusThree = document.getElementById("square-0");
+//         } else if(currentPlayer.position === 22){
+//           positionPlusThree = document.getElementById("square-1");
+//         } else if(currentPlayer.position === 23){
+//           positionPlusThree = document.getElementById("square-2");
+//         } else {
+//           positionPlusThree = document.getElementById("square-" + (currentPlayer.position + 3));
+//         }
+        
+        
+        
+//         if(!(positionPlusOne.classList.contains("occupied")) && !(positionPlusTwo.classList.contains("occupied")) && !(positionPlusThree.classList.contains("occupied"))){
+//             currentPlayer.target =  currentPlayer.position + 1;
+//           } else if(currentPlayer.position === 20 && positionPlusOne.classList.contains("occupied") && positionPlusTwo.classList.contains("occupied") && positionPlusThree.classList.contains("occupied")){
+//             currentPlayer.target = 0;
+//           } else if(currentPlayer.position === 21 && positionPlusOne.classList.contains("occupied") && positionPlusTwo.classList.contains("occupied") && positionPlusThree.classList.contains("occupied")){
+//             currentPlayer.target = 1;
+//           } else if(currentPlayer.position === 22 && positionPlusOne.classList.contains("occupied") && positionPlusTwo.classList.contains("occupied") && positionPlusThree.classList.contains("occupied")){
+//             currentPlayer.target = 2;
+//           } else if(currentPlayer.position === 23 && positionPlusOne.classList.contains("occupied") && positionPlusTwo.classList.contains("occupied") && positionPlusThree.classList.contains("occupied")){
+//             currentPlayer.target = 3;
+//           } else if(positionPlusOne.classList.contains("occupied") && positionPlusTwo.classList.contains("occupied") && positionPlusThree.classList.contains("occupied")){
+//             currentPlayer.target = currentPlayer.position + 4;
+//           } else if(currentPlayer.position === 21 && positionPlusOne.classList.contains("occupied") && positionPlusThree.classList.contains("occupied") && !(positionPlusThree.classList.contains("occupied"))){
+//             currentPlayer.target = 0;
+//           } else if(currentPlayer.position === 22 && positionPlusOne.classList.contains("occupied") && positionPlusThree.classList.contains("occupied") && !(positionPlusThree.classList.contains("occupied"))){
+//             currentPlayer.target = 1;
+//           } else if(currentPlayer.position === 23 && positionPlusOne.classList.contains("occupied") && positionPlusThree.classList.contains("occupied") && !(positionPlusThree.classList.contains("occupied"))){
+//             currentPlayer.target = 2;
+//           } else if(positionPlusOne.classList.contains("occupied") && positionPlusTwo.classList.contains("occupied") && !(positionPlusThree.classList.contains("occupied"))){
+//             currentPlayer.target = currentPlayer.position + 3;
+//           } else if(currentPlayer.position === 22 && positionPlusOne.classList.contains("occupied") && !(positionPlusTwo.classList.contains("occupied"))  && !(positionPlusThree.classList.contains("occupied"))){
+//             currentPlayer.target = 0;
+//           } else if(currentPlayer.position === 23 && positionPlusOne.classList.contains("occupied") && !(positionPlusTwo.classList.contains("occupied"))  && !(positionPlusThree.classList.contains("occupied"))){
+//             currentPlayer.target = 1;
+//           } else if(positionPlusOne.classList.contains("occupied") && !(positionPlusTwo.classList.contains("occupied")) && !(positionPlusThree.classList.contains("occupied"))){
+//             currentPlayer.target = currentPlayer.position + 2;
+//           } else if(currentPlayer.position === 23 && !(positionPlusOne.classList.contains("occupied")) && !(positionPlusTwo.classList.contains("occupied")) && !(positionPlusThree.classList.contains("occupied"))){
+//             currentPlayer.target =  0;
+//           } 
+          
+//           console.log(currentPlayer.targetPosition());
