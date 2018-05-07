@@ -178,26 +178,60 @@ currentPlayer.currentPosition().classList.add('player1-active');
 currentPlayer.targetPosition().classList.add('player1-target');
 currentPlayer.currentPosition().classList.add('current-player');
 
+var player1Name = prompt("Player 1, enter your name!");
+if (player1Name == ""){
+  document.getElementById("player1-name").textContent = "Player 1";
+} else {
+  document.getElementById("player1-name").textContent = player1Name;
+}
+
+
+
+document.getElementById("p1lives").textContent = Player1.lives;
+
 if(Player2.active){
   Player2.currentPosition().classList.add("player2");
+  var player2Name = prompt("Player 2, enter your name!");
+    if (player2Name == ""){
+      document.getElementById("player2-name").textContent = "Player 2";
+    } else {
+      document.getElementById("player2-name").textContent = player2Name;
+    }
+  document.getElementById("p2lives").textContent = Player2.lives;
 } else {
   document.getElementById("p2-life-count").style.display = "none";
 }
+
 if(Player3.active){
-  Player3.currentPosition().classList.add("player3")
+  Player3.currentPosition().classList.add("player3");
+  var player3Name = prompt("Player 3, enter your name!");
+    if (player3Name == ""){
+      document.getElementById("player3-name").textContent = "Player 3";
+    } else {
+      document.getElementById("player3-name").textContent = player3Name;
+    }
+  document.getElementById("p3lives").textContent = Player3.lives;
 } else {
   document.getElementById("p3-life-count").style.display = "none";
 }
+
 if(Player4.active){
-  Player4.currentPosition().classList.add("player4")
+  Player4.currentPosition().classList.add("player4");
+  var player4Name = prompt("Player 4, enter your name!");
+    if (player4Name == ""){
+      document.getElementById("player4-name").textContent = "Player 4";
+    } else {
+      document.getElementById("player4-name").textContent = player4Name;
+    }
+  document.getElementById("p4lives").textContent = Player4.lives;
 } else {
   document.getElementById("p4-life-count").style.display = "none";
 }
 
-document.getElementById("p1lives").textContent = Player1.lives;
-document.getElementById("p2lives").textContent = Player2.lives;
-document.getElementById("p3lives").textContent = Player3.lives;
-document.getElementById("p4lives").textContent = Player4.lives;
+
+
+
+
 
 for(var i in nonCurrentPlayers){
   nonCurrentPlayers[i].currentPosition().classList.add("non-current-player");
