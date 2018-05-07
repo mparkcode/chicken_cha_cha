@@ -58,7 +58,33 @@ img{
   animation: player2-pulse 1s infinite;
 }
 
+.player3{
+  border: 2px solid green;
+}
 
+.player3-active{
+  border: 2px solid green;
+  background: #b3ffb3;
+}
+
+.player3-target {
+  background-size: cover;
+  animation: player3-pulse 1s infinite;
+}
+
+.player4{
+  border: 2px solid purple;
+}
+
+.player4-active{
+  border: 2px solid purple;
+  background: #ff80ff;
+}
+
+.player4-target {
+  background-size: cover;
+  animation: player4-pulse 1s infinite;
+}
 
 
 @keyframes player1-pulse {
@@ -85,4 +111,26 @@ img{
   }
 }
 
+@keyframes player3-pulse {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: #b3ffb3;
+  }
+  100%{
+    background-color: white;
+  }
+}
 
+@keyframes player4-pulse {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: #ff80ff;
+  }
+  100%{
+    background-color: white;
+  }
+}
