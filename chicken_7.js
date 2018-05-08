@@ -84,7 +84,7 @@ var displayCards = document.querySelectorAll(".displayCards");
 
 Player1 = {
   active: true,
-  lives: 2,
+  lives: 1,
   position: 0,
   target: 1,
   currentPosition: function(){
@@ -98,7 +98,7 @@ Player1 = {
 
 Player2 = {
   active: false,
-  lives: 2,
+  lives: 1,
   position: 12,
   target: 13,
   currentPosition: function(){
@@ -111,7 +111,7 @@ Player2 = {
 
 Player3 = {
   active: false,
-  lives: 2,
+  lives: 1,
   position: 12,
   target: 13,
   currentPosition: function(){
@@ -124,7 +124,7 @@ Player3 = {
 
 Player4 = {
   active: false,
-  lives: 2,
+  lives: 1,
   position: 17,
   target: 18,
   currentPosition: function(){
@@ -228,15 +228,9 @@ if(Player4.active){
   document.getElementById("p4-life-count").style.display = "none";
 }
 
-
-
-
-
-
 for(var i in nonCurrentPlayers){
   nonCurrentPlayers[i].currentPosition().classList.add("non-current-player");
 }
-
 
 
 
@@ -279,89 +273,84 @@ for (var i = 0; i < hiddenPics.length; i++) {
           currentPlayer.targetPosition().classList.remove('player4-target');
         }
 
-        //reduces nonCurrentPlayer lives by 1 if jumped over
+        //take all a players lives if jumped over
+        function takeLives(){
+          if(nonCurrentPlayers[i].lives > 0){
+            currentPlayer.lives += nonCurrentPlayers[i].lives;
+            nonCurrentPlayers[i].lives = 0;
+          }
+        }
+        
         if(currentPlayer.target === 0 && currentPlayer.position === 22){
           for(var i in nonCurrentPlayers){
             if (nonCurrentPlayers[i].position == 23){
-              nonCurrentPlayers[i].lives -= 1;
-              currentPlayer.lives += 1;
+              takeLives();
             }
           }
         } else if (currentPlayer.target === 0 && currentPlayer.position === 21){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == 22 || nonCurrentPlayers[i].position == 23){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         } else if (currentPlayer.target === 0 && currentPlayer.position === 20){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == 21 || nonCurrentPlayers[i].position == 22  || nonCurrentPlayers[i].position == 23){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         } else if (currentPlayer.target === 1 && currentPlayer.position === 23){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == 0){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         } else if (currentPlayer.target === 1 && currentPlayer.position === 22){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == 0 || nonCurrentPlayers[i].position == 23){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         } else if (currentPlayer.target === 1 && currentPlayer.position === 21){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == 0 || nonCurrentPlayers[i].position == 23 || nonCurrentPlayers[i].position == 22){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         } else if (currentPlayer.target === 2 && currentPlayer.position === 23){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == 0 || nonCurrentPlayers[i].position == 1){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         } else if (currentPlayer.target === 2 && currentPlayer.position === 22){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == 23 || nonCurrentPlayers[i].position == 0 || nonCurrentPlayers[i].position == 1){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         } else if (currentPlayer.target === 3 && currentPlayer.position === 23){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == 0 || nonCurrentPlayers[i].position == 1 || nonCurrentPlayers[i].position == 2){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         } else if (currentPlayer.target === currentPlayer.position + 2){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == currentPlayer.position + 1){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         } else if (currentPlayer.target === currentPlayer.position + 3){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == currentPlayer.position + 1 || nonCurrentPlayers[i].position == currentPlayer.position + 2){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         } else if (currentPlayer.target === currentPlayer.position + 4){
           for(var i in nonCurrentPlayers){
             if(nonCurrentPlayers[i].position == currentPlayer.position + 1 || nonCurrentPlayers[i].position == currentPlayer.position + 2 || nonCurrentPlayers[i].position == currentPlayer.position + 3){
-            nonCurrentPlayers[i].lives -= 1;
-            currentPlayer.lives += 1;
+            takeLives();
             }
           }
         }
