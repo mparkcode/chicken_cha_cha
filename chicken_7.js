@@ -126,7 +126,6 @@ if(numPlayers === 2){
   nonCurrentPlayers.push(Player2, Player3, Player4);
 }
 
-
 var currentPlayer = nonCurrentPlayers.shift();
 
 function addActiveClasses(num){
@@ -135,192 +134,109 @@ function addActiveClasses(num){
   currentPlayer.targetPosition().classList.add('player'+num+'-target');
 }
 
-addActiveClasses(1);
+function setPlayerDetails(player, num){
+  if(player.active){
+    player.currentPosition().classList.add("player"+num);
+    var playerName = prompt("Player "+num+", enter your name!");
+    if (playerName == ""){
+      document.getElementById("player"+num+"-name").textContent = "Player "+num;
+    } else {
+      document.getElementById("player"+num+"-name").textContent = playerName;
+    }
+    document.getElementById("p"+num+"lives").textContent = player.lives;
+  } else {
+    document.getElementById("p"+num+"-life-count").style.display = "none";
+  }  
+}
 
+setPlayerDetails(Player1,1);
+setPlayerDetails(Player2,2);
+setPlayerDetails(Player3,3);
+setPlayerDetails(Player4,4);
 currentPlayer.currentPosition().classList.add('current-player');
-
-var player1Name = prompt("Player 1, enter your name!");
-if (player1Name == ""){
-  document.getElementById("player1-name").textContent = "Player 1";
-} else {
-  document.getElementById("player1-name").textContent = player1Name;
-}
-
-document.getElementById("p1lives").textContent = Player1.lives;
-
-
-if(Player2.active){
-  Player2.currentPosition().classList.add("player2");
-  var player2Name = prompt("Player 2, enter your name!");
-  if (player2Name == ""){
-    document.getElementById("player2-name").textContent = "Player 2";
-  } else {
-    document.getElementById("player2-name").textContent = player2Name;
-  }
-  document.getElementById("p2lives").textContent = Player2.lives;
-} else {
-  document.getElementById("p2-life-count").style.display = "none";
-}
-
-if(Player3.active){
-  Player3.currentPosition().classList.add("player3");
-  var player3Name = prompt("Player 3, enter your name!");
-  if (player3Name == ""){
-    document.getElementById("player3-name").textContent = "Player 3";
-  } else {
-    document.getElementById("player3-name").textContent = player3Name;
-  }
-  document.getElementById("p3lives").textContent = Player3.lives;
-} else {
-  document.getElementById("p3-life-count").style.display = "none";
-}
-
-if(Player4.active){
-  Player4.currentPosition().classList.add("player4");
-  var player4Name = prompt("Player 4, enter your name!");
-  if (player4Name == ""){
-    document.getElementById("player4-name").textContent = "Player 4";
-  } else {
-    document.getElementById("player4-name").textContent = player4Name;
-  }
-  document.getElementById("p4lives").textContent = Player4.lives;
-} else {
-  document.getElementById("p4-life-count").style.display = "none";
-}
+addActiveClasses(1);
 
 for(var i in nonCurrentPlayers){
   nonCurrentPlayers[i].currentPosition().classList.add("non-current-player");
 }
 
 
-for (var i = 0; i < hiddenPics.length; i++){
+for (var i = 0; i < hiddenPics.length; i++) {
   if(hiddenPics[i].classList.contains('cover')){
     hiddenPics[i].addEventListener('click', function(){
       let piece = this;
+      piece.classList.remove('cover');
+      piece.firstChild.classList.remove('hidden');
       setTimeout(function(){
         piece.classList.add('cover');
         piece.firstChild.classList.add('hidden');
       },1000);
-    });
-  }
-}
-
-for (var i = 0; i < hiddenPics.length; i++) {
-  if(hiddenPics[i].classList.contains('cover')){
-    hiddenPics[i].addEventListener('click', function(){
-      this.classList.remove('cover');
-      this.firstChild.classList.remove('hidden');
       
       if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
 
         //Removes the player color & current-player class on current game piece
+        function removeClasses(num){
+          currentPlayer.currentPosition().classList.remove('player'+num+'-active');
+          currentPlayer.currentPosition().classList.remove('current-player');
+          currentPlayer.targetPosition().classList.remove('player'+num+'-target');
+        }
+        
         if(currentPlayer === Player1){
-          currentPlayer.currentPosition().classList.remove('player1-active');
-          currentPlayer.currentPosition().classList.remove('current-player');
-          currentPlayer.targetPosition().classList.remove('player1-target');
+          removeClasses(1);
         } else if(currentPlayer === Player2){
-          currentPlayer.currentPosition().classList.remove('player2-active');
-          currentPlayer.currentPosition().classList.remove('current-player');
-          currentPlayer.targetPosition().classList.remove('player2-target');
+          removeClasses(2);
         } else if(currentPlayer === Player3){
-          currentPlayer.currentPosition().classList.remove('player3-active');
-          currentPlayer.currentPosition().classList.remove('current-player');
-          currentPlayer.targetPosition().classList.remove('player3-target');
+          removeClasses(3);
         } else if(currentPlayer === Player4){
-          currentPlayer.currentPosition().classList.remove('player4-active');
-          currentPlayer.currentPosition().classList.remove('current-player');
-          currentPlayer.targetPosition().classList.remove('player4-target');
+          removeClasses(4);
         }
 
-        //take all a players lives if jumped over
-        function takeLives(){
-          if(nonCurrentPlayers[i].lives > 0){
-            currentPlayer.lives += nonCurrentPlayers[i].lives;
-            nonCurrentPlayers[i].lives = 0;
+        //take all  players lives if jumped over
+        function livesToTake(p1,p2,p3,p4,p5){
+          if(currentPlayer.target === p1 && currentPlayer.position === p2){
+            for(var i in nonCurrentPlayers){
+              if (nonCurrentPlayers[i].position == p3 || nonCurrentPlayers[i].position == p4 || nonCurrentPlayers[i].position == p5){
+                if(nonCurrentPlayers[i].lives > 0){
+                  currentPlayer.lives += nonCurrentPlayers[i].lives;
+                  nonCurrentPlayers[i].lives = 0;
+                }
+              }
+            }
           }
         }
         
-        if(currentPlayer.target === 0 && currentPlayer.position === 22){
-          for(var i in nonCurrentPlayers){
-            if (nonCurrentPlayers[i].position == 23){
-              takeLives();
-            }
-          }
-        } else if (currentPlayer.target === 0 && currentPlayer.position === 21){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == 22 || nonCurrentPlayers[i].position == 23){
-            takeLives();
-            }
-          }
-        } else if (currentPlayer.target === 0 && currentPlayer.position === 20){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == 21 || nonCurrentPlayers[i].position == 22  || nonCurrentPlayers[i].position == 23){
-            takeLives();
-            }
-          }
-        } else if (currentPlayer.target === 1 && currentPlayer.position === 23){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == 0){
-            takeLives();
-            }
-          }
-        } else if (currentPlayer.target === 1 && currentPlayer.position === 22){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == 0 || nonCurrentPlayers[i].position == 23){
-            takeLives();
-            }
-          }
-        } else if (currentPlayer.target === 1 && currentPlayer.position === 21){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == 0 || nonCurrentPlayers[i].position == 23 || nonCurrentPlayers[i].position == 22){
-            takeLives();
-            }
-          }
-        } else if (currentPlayer.target === 2 && currentPlayer.position === 23){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == 0 || nonCurrentPlayers[i].position == 1){
-            takeLives();
-            }
-          }
-        } else if (currentPlayer.target === 2 && currentPlayer.position === 22){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == 23 || nonCurrentPlayers[i].position == 0 || nonCurrentPlayers[i].position == 1){
-            takeLives();
-            }
-          }
-        } else if (currentPlayer.target === 3 && currentPlayer.position === 23){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == 0 || nonCurrentPlayers[i].position == 1 || nonCurrentPlayers[i].position == 2){
-            takeLives();
-            }
-          }
-        } else if (currentPlayer.target === currentPlayer.position + 2){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == currentPlayer.position + 1){
-            takeLives();
-            }
-          }
-        } else if (currentPlayer.target === currentPlayer.position + 3){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == currentPlayer.position + 1 || nonCurrentPlayers[i].position == currentPlayer.position + 2){
-            takeLives();
-            }
-          }
-        } else if (currentPlayer.target === currentPlayer.position + 4){
-          for(var i in nonCurrentPlayers){
-            if(nonCurrentPlayers[i].position == currentPlayer.position + 1 || nonCurrentPlayers[i].position == currentPlayer.position + 2 || nonCurrentPlayers[i].position == currentPlayer.position + 3){
-            takeLives();
-            }
-          }
-        }
+        livesToTake(0,22,23,"","");
+        livesToTake(0,21,22,23,"");
+        livesToTake(0,20,21,22,23);
+        livesToTake(1,23,0,"","");
+        livesToTake(1,22,0,23,"");
+        livesToTake(1,21,0,23,22);
+        livesToTake(2,23,0,1,"");
+        livesToTake(2,22,23,0,1);
+        livesToTake(3,23,0,1,2);
+        livesToTake(currentPlayer.position + 2,currentPlayer.position,currentPlayer.position + 1,"","");
+        livesToTake(currentPlayer.position + 3,currentPlayer.position,currentPlayer.position + 1,currentPlayer.position + 2,"");
+        livesToTake(currentPlayer.position + 4,currentPlayer.position,currentPlayer.position + 1,currentPlayer.position + 2,currentPlayer.position + 3);
+        
         document.getElementById("p1lives").textContent = Player1.lives;
         document.getElementById("p2lives").textContent = Player2.lives;
         document.getElementById("p3lives").textContent = Player3.lives;
         document.getElementById("p4lives").textContent = Player4.lives;
 
         //checks for winner
+        // function endGame(){
+        //   nonCurrentPlayers.push(currentPlayer);
+        //   for(var i in nonCurrentPlayers){
+        //     nonCurrentPlayers[i].currentPosition().classList = "";
+        //     nonCurrentPlayers[i].targetPosition().classList = "";
+        //   }
+        //   currentPlayer = "";
+        //   nonCurrentPlayers = [];
+        //   document.getElementById("life-count").style.display = "none";
+        // }
         
-        function endGame(){
+        if(currentPlayer.lives == nonCurrentPlayers.length+1){
+          alert("Winner!");
           nonCurrentPlayers.push(currentPlayer);
           for(var i in nonCurrentPlayers){
             nonCurrentPlayers[i].currentPosition().classList = "";
@@ -329,23 +245,6 @@ for (var i = 0; i < hiddenPics.length; i++) {
           currentPlayer = "";
           nonCurrentPlayers = [];
           document.getElementById("life-count").style.display = "none";
-        }
-        
-        if(nonCurrentPlayers.length == 1){
-          if(currentPlayer.lives == 2){
-            alert("Winner");
-            endGame();
-          }
-        } else if(nonCurrentPlayers.length == 2){
-          if(currentPlayer.lives == 3){
-            alert("Winner");
-            endGame();
-          }
-        } else if(nonCurrentPlayers.length == 3){
-          if(currentPlayer.lives == 4){
-            alert("Winner");
-            endGame();
-          }
         }
 
         //changes the current position for next move
