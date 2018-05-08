@@ -359,6 +359,35 @@ for (var i = 0; i < hiddenPics.length; i++) {
         document.getElementById("p3lives").textContent = Player3.lives;
         document.getElementById("p4lives").textContent = Player4.lives;
 
+        //checks for winner
+        
+        function endGame(){
+          nonCurrentPlayers.push(currentPlayer);
+          for(var i in nonCurrentPlayers){
+            nonCurrentPlayers[i].currentPosition().classList = "";
+            nonCurrentPlayers[i].targetPosition().classList = "";
+          }
+          currentPlayer = "";
+          nonCurrentPlayers = [];
+          document.getElementById("life-count").style.display = "none";
+        }
+        
+        if(nonCurrentPlayers.length == 1){
+          if(currentPlayer.lives == 2){
+            alert("Winner");
+            endGame();
+          }
+        } else if(nonCurrentPlayers.length == 2){
+          if(currentPlayer.lives == 3){
+            alert("Winner");
+            endGame();
+          }
+        } else if(nonCurrentPlayers.length == 3){
+          if(currentPlayer.lives == 4){
+            alert("Winner");
+            endGame();
+          }
+        }
 
         //changes the current position for next move
         currentPlayer.position = currentPlayer.target;
