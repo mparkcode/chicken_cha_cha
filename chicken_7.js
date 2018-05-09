@@ -165,8 +165,8 @@ for (var i = 0; i < hiddenPics.length; i++) {
   if(hiddenPics[i].classList.contains('cover')){
     hiddenPics[i].addEventListener('click', function(){
       let piece = this;
-      piece.classList.remove('cover');
-      piece.firstChild.classList.remove('hidden');
+      this.classList.remove('cover');
+      this.firstChild.classList.remove('hidden');
       setTimeout(function(){
         piece.classList.add('cover');
         piece.firstChild.classList.add('hidden');
@@ -209,8 +209,8 @@ for (var i = 0; i < hiddenPics.length; i++) {
         livesToTake(0,21,22,23,"");
         livesToTake(0,20,21,22,23);
         livesToTake(1,23,0,"","");
-        livesToTake(1,22,0,23,"");
-        livesToTake(1,21,0,23,22);
+        livesToTake(1,22,23,0,"");
+        livesToTake(1,21,22,23,0);
         livesToTake(2,23,0,1,"");
         livesToTake(2,22,23,0,1);
         livesToTake(3,23,0,1,2);
@@ -224,17 +224,6 @@ for (var i = 0; i < hiddenPics.length; i++) {
         document.getElementById("p4lives").textContent = Player4.lives;
 
         //checks for winner
-        // function endGame(){
-        //   nonCurrentPlayers.push(currentPlayer);
-        //   for(var i in nonCurrentPlayers){
-        //     nonCurrentPlayers[i].currentPosition().classList = "";
-        //     nonCurrentPlayers[i].targetPosition().classList = "";
-        //   }
-        //   currentPlayer = "";
-        //   nonCurrentPlayers = [];
-        //   document.getElementById("life-count").style.display = "none";
-        // }
-        
         if(currentPlayer.lives == nonCurrentPlayers.length+1){
           alert("Winner!");
           nonCurrentPlayers.push(currentPlayer);
@@ -251,19 +240,30 @@ for (var i = 0; i < hiddenPics.length; i++) {
         currentPlayer.position = currentPlayer.target;
         
         //adds the player color & current-player class to the current position
-        if(currentPlayer === Player1){
-          currentPlayer.currentPosition().classList.add('player1-active');
-          currentPlayer.currentPosition().classList.add('current-player');
-        } else if(currentPlayer === Player2){
-          currentPlayer.currentPosition().classList.add('player2-active');
-          currentPlayer.targetPosition().classList.add('current-player');
-        } else if(currentPlayer === Player3){
-          currentPlayer.currentPosition().classList.add('player3-active');
-          currentPlayer.targetPosition().classList.add('current-player');
-        } else if(currentPlayer === Player4){
-          currentPlayer.currentPosition().classList.add('player4-active');
-          currentPlayer.targetPosition().classList.add('current-player');
+        function addColorAndCurrentClass(player, num){
+          if(currentPlayer === player){
+            currentPlayer.currentPosition().classList.add('player'+num+'-active');
+            currentPlayer.currentPosition().classList.add('current-player');
+          }
         }
+        addColorAndCurrentClass(Player1,1);
+        addColorAndCurrentClass(Player2,2);
+        addColorAndCurrentClass(Player3,3);
+        addColorAndCurrentClass(Player4,4);
+        
+        // if(currentPlayer === Player1){
+        //   currentPlayer.currentPosition().classList.add('player1-active');
+        //   currentPlayer.currentPosition().classList.add('current-player');
+        // } else if(currentPlayer === Player2){
+        //   currentPlayer.currentPosition().classList.add('player2-active');
+        //   currentPlayer.targetPosition().classList.add('current-player');
+        // } else if(currentPlayer === Player3){
+        //   currentPlayer.currentPosition().classList.add('player3-active');
+        //   currentPlayer.targetPosition().classList.add('current-player');
+        // } else if(currentPlayer === Player4){
+        //   currentPlayer.currentPosition().classList.add('player4-active');
+        //   currentPlayer.targetPosition().classList.add('current-player');
+        // }
         
         //changes the target position
           if(currentPlayer.position === 20 && document.getElementById("square-21").classList.contains("non-current-player") && document.getElementById("square-22").classList.contains("non-current-player") && document.getElementById("square-23").classList.contains("non-current-player")){
