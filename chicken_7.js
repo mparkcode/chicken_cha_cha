@@ -240,30 +240,16 @@ for (var i = 0; i < hiddenPics.length; i++) {
         currentPlayer.position = currentPlayer.target;
         
         //adds the player color & current-player class to the current position
-        function addColorAndCurrentClass(player, num){
+        function addActiveColorAndCurrentClass(player, num){
           if(currentPlayer === player){
             currentPlayer.currentPosition().classList.add('player'+num+'-active');
             currentPlayer.currentPosition().classList.add('current-player');
           }
         }
-        addColorAndCurrentClass(Player1,1);
-        addColorAndCurrentClass(Player2,2);
-        addColorAndCurrentClass(Player3,3);
-        addColorAndCurrentClass(Player4,4);
-        
-        // if(currentPlayer === Player1){
-        //   currentPlayer.currentPosition().classList.add('player1-active');
-        //   currentPlayer.currentPosition().classList.add('current-player');
-        // } else if(currentPlayer === Player2){
-        //   currentPlayer.currentPosition().classList.add('player2-active');
-        //   currentPlayer.targetPosition().classList.add('current-player');
-        // } else if(currentPlayer === Player3){
-        //   currentPlayer.currentPosition().classList.add('player3-active');
-        //   currentPlayer.targetPosition().classList.add('current-player');
-        // } else if(currentPlayer === Player4){
-        //   currentPlayer.currentPosition().classList.add('player4-active');
-        //   currentPlayer.targetPosition().classList.add('current-player');
-        // }
+        addActiveColorAndCurrentClass(Player1,1);
+        addActiveColorAndCurrentClass(Player2,2);
+        addActiveColorAndCurrentClass(Player3,3);
+        addActiveColorAndCurrentClass(Player4,4);
         
         //changes the target position
           if(currentPlayer.position === 20 && document.getElementById("square-21").classList.contains("non-current-player") && document.getElementById("square-22").classList.contains("non-current-player") && document.getElementById("square-23").classList.contains("non-current-player")){
