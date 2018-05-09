@@ -205,6 +205,8 @@ for (var i = 0; i < hiddenPics.length; i++) {
           }
         }
         
+        
+        
         livesToTake(0,22,23,"","");
         livesToTake(0,21,22,23,"");
         livesToTake(0,20,21,22,23);
@@ -251,7 +253,7 @@ for (var i = 0; i < hiddenPics.length; i++) {
         addActiveColorAndCurrentClass(Player3,3);
         addActiveColorAndCurrentClass(Player4,4);
         
-        //changes the target position
+        // changes the target position
           if(currentPlayer.position === 20 && document.getElementById("square-21").classList.contains("non-current-player") && document.getElementById("square-22").classList.contains("non-current-player") && document.getElementById("square-23").classList.contains("non-current-player")){
             currentPlayer.target = 0;
           } else if(currentPlayer.position === 21 && document.getElementById("square-22").classList.contains("non-current-player") && document.getElementById("square-23").classList.contains("non-current-player") && document.getElementById("square-0").classList.contains("non-current-player")){
