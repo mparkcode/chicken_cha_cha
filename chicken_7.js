@@ -372,55 +372,115 @@ if(numPlayers > 1){
 
 //-------------------------------------------------Single Player game
 if(numPlayers === 1){
-
-  var difficulty = prompt("Enter difficulty");
-  var clicksLeft;
-  if(difficulty == "easy"){
-    clicksLeft = 120;
-  }
-  if(difficulty == "medium"){
-    clicksLeft = 80;
-  }
-  if(difficulty == "difficult"){
-    clicksLeft = 40;
-  }
-  
-  document.getElementById("click-counter").textContent = clicksLeft;
-  
-  for (var i = 0; i < hiddenPics.length; i++) {
-    if(hiddenPics[i].classList.contains('cover')){
-      hiddenPics[i].addEventListener('click', function(){
-        let piece = this;
-        this.classList.remove('cover');
-        this.firstChild.classList.remove('hidden');
-        setTimeout(function(){
-          piece.classList.add('cover');
-          piece.firstChild.classList.add('hidden');
-        },1000);
-        if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
-          removeClasses(1);
-          currentPlayer.position = currentPlayer.target;
-          getTarget();
-          if(currentPlayer.position == 0 && currentPlayer.target == 1){
-            alert("winner");
-            removeActiveClasses(Player1,1);
-            currentPlayer.currentPosition().classList.remove("player1");
-            currentPlayer = "";
+  var gameType = prompt("Enter time challenge or click challenge");
+  if(gameType == "click"){
+    document.getElementById("timer").style.display="none";
+    var difficulty = prompt("Enter difficulty");
+    var clicksLeft;
+    if(difficulty == "easy"){
+      clicksLeft = 120;
+    }
+    if(difficulty == "medium"){
+      clicksLeft = 80;
+    }
+    if(difficulty == "difficult"){
+      clicksLeft = 40;
+    }
+    
+    document.getElementById("click-counter").textContent = clicksLeft;
+    
+    for (var i = 0; i < hiddenPics.length; i++) {
+      if(hiddenPics[i].classList.contains('cover')){
+        hiddenPics[i].addEventListener('click', function(){
+          let piece = this;
+          this.classList.remove('cover');
+          this.firstChild.classList.remove('hidden');
+          setTimeout(function(){
+            piece.classList.add('cover');
+            piece.firstChild.classList.add('hidden');
+          },1000);
+          if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
+            removeClasses(1);
+            currentPlayer.position = currentPlayer.target;
+            getTarget();
+            if(currentPlayer.position == 0 && currentPlayer.target == 1){
+              alert("winner");
+              removeActiveClasses(Player1,1);
+              currentPlayer.currentPosition().classList.remove("player1");
+              currentPlayer = "";
+            }
+            addActiveColorAndCurrentClass(Player1,1);
+            currentPlayer.targetPosition().classList.add('player1-target');
+          } else {
+            clicksLeft -= 1;
+            if(clicksLeft == 0){
+              alert("loser");
+              removeActiveClasses(Player1,1);
+              currentPlayer.currentPosition().classList.remove("player1");
+              currentPlayer = "";
+            }
+            document.getElementById("click-counter").textContent = clicksLeft;
           }
-          addActiveColorAndCurrentClass(Player1,1);
-          currentPlayer.targetPosition().classList.add('player1-target');
-        } else {
-          clicksLeft -= 1;
-          if(clicksLeft == 0){
+        });
+      }  
+    }
+  }
+  if(gameType == "time"){
+    document.getElementById("clicks").style.display="none";
+    var difficulty = prompt("Enter difficulty");
+    var timeLeft;
+    if(difficulty == "easy"){
+      timeLeft = 180;
+    }
+    if(difficulty == "medium"){
+      timeLeft = 120;
+    }
+    if(difficulty == "difficult"){
+      timeLeft = 60;
+    }
+    
+    document.getElementById("time-counter").textContent = timeLeft;
+    
+    var interval = setInterval(function() {
+      document.getElementById('time-counter').innerHTML = --timeLeft;
+      if(timeLeft <= 0){
+            clearInterval(interval);
             alert("loser");
             removeActiveClasses(Player1,1);
             currentPlayer.currentPosition().classList.remove("player1");
             currentPlayer = "";
+            document.getElementById("timer").style.display = "none";
           }
-          document.getElementById("click-counter").textContent = clicksLeft;
-        }
-      });
-    }  
+    }, 1000);
+    
+    for (var i = 0; i < hiddenPics.length; i++) {
+      if(hiddenPics[i].classList.contains('cover')){
+        hiddenPics[i].addEventListener('click', function(){
+          let piece = this;
+          this.classList.remove('cover');
+          this.firstChild.classList.remove('hidden');
+          setTimeout(function(){
+            piece.classList.add('cover');
+            piece.firstChild.classList.add('hidden');
+          },1000);
+          if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
+            removeClasses(1);
+            currentPlayer.position = currentPlayer.target;
+            getTarget();
+            if(currentPlayer.position == 0 && currentPlayer.target == 1){
+              clearInterval(interval);
+              document.getElementById("timer").style.display = "none";
+              alert("winner");
+              removeActiveClasses(Player1,1);
+              currentPlayer.currentPosition().classList.remove("player1");
+              currentPlayer = "";
+            }
+            addActiveColorAndCurrentClass(Player1,1);
+            currentPlayer.targetPosition().classList.add('player1-target');
+          }
+        });
+      }  
+    }
   }
 }
 
