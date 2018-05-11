@@ -22,21 +22,9 @@ var images2 = ["images/fried_egg.png",
               "images/feather.png",
               "images/hedgehog.png",
               "images/newborn_chicken.png",
-              "images/snail.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",
-              "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png",];
+              "images/snail.png"];
 
-var hiddenPosition = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+var hiddenPosition = [0,1,2,3,4,5,6,7,8,9,10,11];
 
 function shuffle(array) {
   let counter = array.length;
@@ -70,11 +58,9 @@ for (var i = 0; i < randomPosition.length; i++) {
 }
 
 
-for (var i = 0; i < 24; i++) {
-  if(document.getElementById('hidden-img-'+i).src !== "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png"){
-    document.getElementById('hidden-img-'+i).classList.add('hidden');
-    document.getElementById('hidden-img-'+i).parentElement.classList.add('cover');
-  }
+for (var i = 0; i < 12; i++) {
+  document.getElementById('hidden-img-'+i).classList.add('hidden');
+  document.getElementById('hidden-img-'+i).parentElement.classList.add('cover');
 }
 
 var hiddenPics = document.querySelectorAll('.hiddenCards');
@@ -97,8 +83,8 @@ function Player(active, lives, position, target){
 
 var Player1 = new Player(false, 1, 0, 1);
 var Player2 = new Player(false, 1, 12, 13);
-var Player3 = new Player(false, 1, 15, 16);
-var Player4 = new Player(false, 1, 17, 18);
+var Player3 = new Player(false, 1, 16, 17);
+var Player4 = new Player(false, 1, 18, 19);
 
 
 
@@ -119,16 +105,16 @@ if(numPlayers === 2){
   Player1.active = true;
   Player2.active = true;
   Player3.active = true;
-  Player2.position = 7;
-  Player2.target = 8;
+  Player2.position = 8;
+  Player2.target = 9;
   nonCurrentPlayers.push(Player2, Player3);
 } else if(numPlayers === 4){
   Player1.active = true;
   Player2.active = true;
   Player3.active = true;
   Player4.active = true;
-  Player2.position = 5;
-  Player2.target = 6;
+  Player2.position = 6;
+  Player2.target = 7;
   Player3.position = 12;
   Player3.target = 13;
   nonCurrentPlayers.push(Player2, Player3, Player4);
@@ -231,9 +217,12 @@ function addActiveClasses(num){
             alert("Winner!");
             nonCurrentPlayers.push(currentPlayer);
             for(var i in nonCurrentPlayers){
-              nonCurrentPlayers[i].currentPosition().classList = "";
-              nonCurrentPlayers[i].targetPosition().classList = "";
+              removeClasses(i);
             }
+            Player1.currentPosition().classList.remove("player1");
+            Player2.currentPosition().classList.remove("player2");
+            Player3.currentPosition().classList.remove("player3");
+            Player4.currentPosition().classList.remove("player4");
             currentPlayer = "";
             nonCurrentPlayers = [];
             document.getElementById("life-count").style.display = "none";
@@ -273,81 +262,82 @@ for(var i in nonCurrentPlayers){
 
 if(numPlayers > 1){
   document.getElementById("clicks").style.display = "none";
+  document.getElementById("timer").style.display = "none";
   for (var i = 0; i < hiddenPics.length; i++) {
-  if(hiddenPics[i].classList.contains('cover')){
-    hiddenPics[i].addEventListener('click', function(){
-      let piece = this;
-      this.classList.remove('cover');
-      this.firstChild.classList.remove('hidden');
-      setTimeout(function(){
-        piece.classList.add('cover');
-        piece.firstChild.classList.add('hidden');
-      },1000);
+    if(hiddenPics[i].classList.contains('cover')){
+      hiddenPics[i].addEventListener('click', function(){
+        let piece = this;
+        this.classList.remove('cover');
+        this.firstChild.classList.remove('hidden');
+        setTimeout(function(){
+          piece.classList.add('cover');
+          piece.firstChild.classList.add('hidden');
+        },1000);
       
-      if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
+        if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
         
-        //removes active classes from current players current position
-        if(currentPlayer === Player1){
-          removeClasses(1);
-        } else if(currentPlayer === Player2){
-          removeClasses(2);
-        } else if(currentPlayer === Player3){
-          removeClasses(3);
-        } else if(currentPlayer === Player4){
-          removeClasses(4);
-        }
+          //removes active classes from current players current position
+          if(currentPlayer === Player1){
+            removeClasses(1);
+          } else if(currentPlayer === Player2){
+            removeClasses(2);
+          } else if(currentPlayer === Player3){
+            removeClasses(3);
+          } else if(currentPlayer === Player4){
+            removeClasses(4);
+          }
         
-        //takes lives if jumping over another player
-        livesToTake();
+          //takes lives if jumping over another player
+          livesToTake();
         
-        //updates scores on screen
-        document.getElementById("p1lives").textContent = Player1.lives;
-        document.getElementById("p2lives").textContent = Player2.lives;
-        document.getElementById("p3lives").textContent = Player3.lives;
-        document.getElementById("p4lives").textContent = Player4.lives;
+          //updates scores on screen
+          document.getElementById("p1lives").textContent = Player1.lives;
+          document.getElementById("p2lives").textContent = Player2.lives;
+          document.getElementById("p3lives").textContent = Player3.lives;
+          document.getElementById("p4lives").textContent = Player4.lives;
         
-        //Checks for a winner
-        checkWinner();
+          //Checks for a winner
+          checkWinner();
   
-        //changes the current position for next move
-        currentPlayer.position = currentPlayer.target;
+          //changes the current position for next move
+          currentPlayer.position = currentPlayer.target;
         
-        //Adds active colors to the current players new position  
-        addActiveColorAndCurrentClass(Player1,1);
-        addActiveColorAndCurrentClass(Player2,2);
-        addActiveColorAndCurrentClass(Player3,3);
-        addActiveColorAndCurrentClass(Player4,4);
+          //Adds active colors to the current players new position  
+          addActiveColorAndCurrentClass(Player1,1);
+          addActiveColorAndCurrentClass(Player2,2);
+          addActiveColorAndCurrentClass(Player3,3);
+          addActiveColorAndCurrentClass(Player4,4);
         
-        //Gets terget for the next move  
-        getTarget();
+          //Gets terget for the next move  
+          getTarget();
 
-        //adds colors to the target
-        if(currentPlayer === Player1){
-          currentPlayer.targetPosition().classList.add('player1-target');
-        } else if(currentPlayer === Player2){
-          currentPlayer.targetPosition().classList.add('player2-target');
-        } else if(currentPlayer === Player3){
-          currentPlayer.targetPosition().classList.add('player3-target');
-        } else if(currentPlayer === Player4){
-          currentPlayer.targetPosition().classList.add('player4-target');
-        }
+          //adds colors to the target
+          if(currentPlayer === Player1){
+            currentPlayer.targetPosition().classList.add('player1-target');
+          } else if(currentPlayer === Player2){
+            currentPlayer.targetPosition().classList.add('player2-target');
+          } else if(currentPlayer === Player3){
+            currentPlayer.targetPosition().classList.add('player3-target');
+          } else if(currentPlayer === Player4){
+            currentPlayer.targetPosition().classList.add('player4-target');
+          }
 
 
-      } else if (this.firstChild.src !== currentPlayer.targetPosition().firstChild.src){
+        } else if (this.firstChild.src !== currentPlayer.targetPosition().firstChild.src){
 
-        //changes the current player in case of incorrect guess
-        currentPlayer.currentPosition().classList.remove("current-player");
-        currentPlayer.currentPosition().classList.add("non-current-player");
+          //changes the current player in case of incorrect guess
+          currentPlayer.currentPosition().classList.remove("current-player");
+          currentPlayer.currentPosition().classList.add("non-current-player");
         
-        //Removes active classes from the current player  
-        removeActiveClasses(Player1,1);
-        removeActiveClasses(Player2,2);
-        removeActiveClasses(Player3,3);
-        removeActiveClasses(Player4,4);
+          //Removes active classes from the current player  
+          removeActiveClasses(Player1,1);
+          removeActiveClasses(Player2,2);
+          removeActiveClasses(Player3,3);
+          removeActiveClasses(Player4,4);
         
-        //Changes the current player
-        nonCurrentPlayers.push(currentPlayer);
-        currentPlayer = nonCurrentPlayers.shift();
+          //Changes the current player
+          nonCurrentPlayers.push(currentPlayer);
+          currentPlayer = nonCurrentPlayers.shift();
         
         //Gets Target for new current player  
         getTarget();
