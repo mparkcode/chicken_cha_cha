@@ -2,70 +2,76 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chicken Cha Cha</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="chicken.css">
+    <link href="https://fonts.googleapis.com/css?family=Gaegu|Gloria+Hallelujah|Indie+Flower|Permanent+Marker" rel="stylesheet">
+    
   </head>
   <body>
-
-    <div class="col-sm-8">  
-      <div class="gameboard">
-        <div class="displayCards" id="square-0"><img src="" alt="" id="img-0" class="img-size"></div>
-        <div id="onemove"><div class="displayCards" id="square-1"><img src="" alt="" id="img-8" class="img-size"></div></div>
-        <div id="twomove"><div class="displayCards" id="square-2"><img src="" alt="" id="img-10" class="img-size"></div></div>
-        <div class="displayCards" id="square-3"><img src="" alt="" id="img-12" class="img-size"></div>
-        <div class="displayCards" id="square-4"><img src="" alt="" id="img-14" class="img-size"></div>
-        <div class="displayCards" id="square-5"><img src="" alt="" id="img-16" class="img-size"></div>
-        <div class="displayCards" id="square-6"><img src="" alt="" id="img-17" class="img-size"></div>
-        <div class="displayCards" id="square-7"><img src="" alt="" id="img-18" class="img-size"></div>
-        <div class="displayCards" id="square-8"><img src="" alt="" id="img-19" class="img-size"></div>
-        <div class="displayCards" id="square-9"><img src="" alt="" id="img-20" class="img-size"></div>
-        <div class="displayCards" id="square-10"><img src="" alt="" id="img-21" class="img-size"></div>
-        <div class="displayCards" id="square-11"><img src="" alt="" id="img-22" class="img-size"></div>
-        <div class="displayCards" id="square-12"><img src="" alt="" id="img-23" class="img-size"></div>
-        <div class="displayCards" id="square-13"><img src="" alt="" id="img-15" class="img-size"></div>
-        <div class="displayCards" id="square-14"><img src="" alt="" id="img-13" class="img-size"></div>
-        <div class="displayCards" id="square-15"><img src="" alt="" id="img-11" class="img-size"></div>
-        <div class="displayCards" id="square-16"><img src="" alt="" id="img-9" class="img-size"></div>
-        <div class="displayCards" id="square-17"><img src="" alt="" id="img-7" class="img-size"></div>
-        <div class="displayCards" id="square-18"><img src="" alt="" id="img-6" class="img-size"></div>
-        <div class="displayCards" id="square-19"><img src="" alt="" id="img-5" class="img-size"></div>
-        <div class="displayCards" id="square-20"><img src="" alt="" id="img-4" class="img-size"></div>
-        <div class="displayCards" id="square-21"><img src="" alt="" id="img-3" class="img-size"></div>
-        <div class="displayCards" id="square-22"><img src="" alt="" id="img-2" class="img-size"></div>
-        <div class="displayCards" id="square-23"><img src="" alt="" id="img-1" class="img-size"></div>
-
-        <div class="hiddenCards" id="hidden-square-0"><img src="" alt="" id="hidden-img-0" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-1"><img src="" alt="" id="hidden-img-1" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-2"><img src="" alt="" id="hidden-img-2" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-3"><img src="" alt="" id="hidden-img-3" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-4"><img src="" alt="" id="hidden-img-4" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-5"><img src="" alt="" id="hidden-img-5" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-6"><img src="" alt="" id="hidden-img-6" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-7"><img src="" alt="" id="hidden-img-7" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-8"><img src="" alt="" id="hidden-img-8" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-9"><img src="" alt="" id="hidden-img-9" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-10"><img src="" alt="" id="hidden-img-10" class="img-size"></div>
-        <div class="hiddenCards" id="hidden-square-11"><img src="" alt="" id="hidden-img-11" class="img-size"></div>
-      </div>
-    </div>
-        
-        
-        
-    <div class="col-sm-4">
-      <div id="info">
-        <!--<img src="images/paper.png" id="paper-sheet"></img>-->
-        <div id="life-count">
-          <h2 id="p1-life-count"><span id="player1-name">Player 1</span>: <span id="p1lives"></span></h2>
-          <h2 id="p2-life-count"><span id="player2-name">Player 2</span>: <span id="p2lives"></span></h2>
-          <h2 id="p3-life-count"><span id="player3-name">Player 3</span>: <span id="p3lives"></span></h2>
-          <h2 id="p4-life-count"><span id="player4-name">Player 4</span>: <span id="p4lives"></span></h2>
-          <h2 id="clicks">Clicks Left: <span id="click-counter"></span></h2>
-          <h2 id="timer">Time Left: <span id="time-counter"></span></h2>
+    <div class="row">
+      <div class="col-sm-7">  
+        <div class="gameboard">
+          <div class="displayCards" id="square-0"><img src="" alt="" id="img-0" class="img-size"></div>
+          <div id="onemove"><div class="displayCards" id="square-1"><img src="" alt="" id="img-8" class="img-size"></div></div>
+          <div id="twomove"><div class="displayCards" id="square-2"><img src="" alt="" id="img-10" class="img-size"></div></div>
+          <div class="displayCards" id="square-3"><img src="" alt="" id="img-12" class="img-size"></div>
+          <div class="displayCards" id="square-4"><img src="" alt="" id="img-14" class="img-size"></div>
+          <div class="displayCards" id="square-5"><img src="" alt="" id="img-16" class="img-size"></div>
+          <div class="displayCards" id="square-6"><img src="" alt="" id="img-17" class="img-size"></div>
+          <div class="displayCards" id="square-7"><img src="" alt="" id="img-18" class="img-size"></div>
+          <div class="displayCards" id="square-8"><img src="" alt="" id="img-19" class="img-size"></div>
+          <div class="displayCards" id="square-9"><img src="" alt="" id="img-20" class="img-size"></div>
+          <div class="displayCards" id="square-10"><img src="" alt="" id="img-21" class="img-size"></div>
+          <div class="displayCards" id="square-11"><img src="" alt="" id="img-22" class="img-size"></div>
+          <div class="displayCards" id="square-12"><img src="" alt="" id="img-23" class="img-size"></div>
+          <div class="displayCards" id="square-13"><img src="" alt="" id="img-15" class="img-size"></div>
+          <div class="displayCards" id="square-14"><img src="" alt="" id="img-13" class="img-size"></div>
+          <div class="displayCards" id="square-15"><img src="" alt="" id="img-11" class="img-size"></div>
+          <div class="displayCards" id="square-16"><img src="" alt="" id="img-9" class="img-size"></div>
+          <div class="displayCards" id="square-17"><img src="" alt="" id="img-7" class="img-size"></div>
+          <div class="displayCards" id="square-18"><img src="" alt="" id="img-6" class="img-size"></div>
+          <div class="displayCards" id="square-19"><img src="" alt="" id="img-5" class="img-size"></div>
+          <div class="displayCards" id="square-20"><img src="" alt="" id="img-4" class="img-size"></div>
+          <div class="displayCards" id="square-21"><img src="" alt="" id="img-3" class="img-size"></div>
+          <div class="displayCards" id="square-22"><img src="" alt="" id="img-2" class="img-size"></div>
+          <div class="displayCards" id="square-23"><img src="" alt="" id="img-1" class="img-size"></div>
+  
+          <div class="hiddenCards" id="hidden-square-0"><img src="" alt="" id="hidden-img-0" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-1"><img src="" alt="" id="hidden-img-1" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-2"><img src="" alt="" id="hidden-img-2" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-3"><img src="" alt="" id="hidden-img-3" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-4"><img src="" alt="" id="hidden-img-4" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-5"><img src="" alt="" id="hidden-img-5" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-6"><img src="" alt="" id="hidden-img-6" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-7"><img src="" alt="" id="hidden-img-7" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-8"><img src="" alt="" id="hidden-img-8" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-9"><img src="" alt="" id="hidden-img-9" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-10"><img src="" alt="" id="hidden-img-10" class="img-size"></div>
+          <div class="hiddenCards" id="hidden-square-11"><img src="" alt="" id="hidden-img-11" class="img-size"></div>
         </div>
       </div>
-    </div>    
-    
+          
+          
+          
+      <div class="col-sm-5">
+        <div id="info">
+          <div id="paper">
+            <img src="images/blank page.png" id="paper-sheet"></img>
+          </div>
+          <div id="life-count">
+            <h2 id="p1-life-count"><span id="player1-name">Player 1</span>: <span id="p1lives"></span></h2>
+            <h2 id="p2-life-count"><span id="player2-name">Player 2</span>: <span id="p2lives"></span></h2>
+            <h2 id="p3-life-count"><span id="player3-name">Player 3</span>: <span id="p3lives"></span></h2>
+            <h2 id="p4-life-count"><span id="player4-name">Player 4</span>: <span id="p4lives"></span></h2>
+            <h2 id="clicks">Clicks Left: <span id="click-counter"></span></h2>
+            <h2 id="timer">Time Left: <span id="time-counter"></span></h2>
+          </div>
+        </div>
+      </div>    
+    </div>
 
 
 

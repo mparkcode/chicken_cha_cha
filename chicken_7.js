@@ -1,3 +1,5 @@
+
+
 var images = ["images/fried_egg.png",
               "images/baby_parrot.png",
               "images/caterpillar.png",
@@ -59,7 +61,7 @@ for (var i = 0; i < randomPosition.length; i++) {
 
 
 for (var i = 0; i < 12; i++) {
-  document.getElementById('hidden-img-'+i).classList.add('hidden');
+  document.getElementById('hidden-img-'+i).classList.add('hidden1');
   document.getElementById('hidden-img-'+i).parentElement.classList.add('cover');
 }
 
@@ -268,10 +270,10 @@ if(numPlayers > 1){
       hiddenPics[i].addEventListener('click', function(){
         let piece = this;
         this.classList.remove('cover');
-        this.firstChild.classList.remove('hidden');
+        this.firstChild.classList.remove('hidden1');
         setTimeout(function(){
           piece.classList.add('cover');
-          piece.firstChild.classList.add('hidden');
+          piece.firstChild.classList.add('hidden1');
         },1000);
       
         if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
@@ -384,10 +386,10 @@ if(numPlayers === 1){
         hiddenPics[i].addEventListener('click', function(){
           let piece = this;
           this.classList.remove('cover');
-          this.firstChild.classList.remove('hidden');
+          this.firstChild.classList.remove('hidden1');
           setTimeout(function(){
             piece.classList.add('cover');
-            piece.firstChild.classList.add('hidden');
+            piece.firstChild.classList.add('hidden1');
           },1000);
           if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
             removeClasses(1);
@@ -448,10 +450,10 @@ if(numPlayers === 1){
         hiddenPics[i].addEventListener('click', function(){
           let piece = this;
           this.classList.remove('cover');
-          this.firstChild.classList.remove('hidden');
+          this.firstChild.classList.remove('hidden1');
           setTimeout(function(){
             piece.classList.add('cover');
-            piece.firstChild.classList.add('hidden');
+            piece.firstChild.classList.add('hidden1');
           },1000);
           if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
             removeClasses(1);
