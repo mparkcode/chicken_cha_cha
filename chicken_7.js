@@ -359,7 +359,19 @@
             currentPlayer = nonCurrentPlayers.shift();
             
             document.getElementById("currentPlayerDisplay").textContent = currentPlayer.name + "'s turn!";
-          
+            if(currentPlayer === Player1){
+              document.getElementById("currentPlayerDisplay").style.color = 'red';
+              document.getElementById("currentPlayerDisplay").style.fontFamily = 'Indie Flower', 'cursive';
+            } else if(currentPlayer === Player2){
+              document.getElementById("currentPlayerDisplay").style.color = 'blue'
+              document.getElementById("currentPlayerDisplay").style.fontFamily = 'Gloria Hallelujah', 'cursive';
+            } else if(currentPlayer === Player3){
+              document.getElementById("currentPlayerDisplay").style.color = 'green';
+              document.getElementById("currentPlayerDisplay").style.fontFamily = 'Permanent Marker', 'cursive';
+            } else if(currentPlayer === Player4){
+              document.getElementById("currentPlayerDisplay").style.color = 'purple';
+              document.getElementById("currentPlayerDisplay").style.fontFamily = 'Gaegu', 'cursive';
+            }
           //Gets Target for new current player  
           getTarget();
           
@@ -555,8 +567,10 @@ function playMusic(){
   function mute(){
     if(backgroundMusic.muted){
       backgroundMusic.muted = false;
+      muteBtn.innerHTML = "mute music"
     } else {
       backgroundMusic.muted = true;
+      muteBtn.innerHTML = "play music"
     }
   }
 }
@@ -572,9 +586,11 @@ function playFx(){
     if(no.muted && rooster.muted){
       no.muted = false;
       rooster.muted = false;
+      muteFxBtn.innerHTML = "mute fx";
     } else {
       no.muted = true;
       rooster.muted = true;
+      muteFxBtn.innerHTML = "play fx";
     }
   }
 }
