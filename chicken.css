@@ -40,6 +40,18 @@ body{
   left: 40%;
 }
 
+#mute-music{
+  position: absolute;
+  margin-top: 100%;
+  left: 20%;
+}
+
+#mute-fx{
+  position: absolute;
+  margin-top: 100%;
+  left: 40%;
+}
+
 #p1-life-count{
   font-family: 'Indie Flower', cursive;
   color: red;

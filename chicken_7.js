@@ -294,7 +294,7 @@
           },1000);
         
           if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
-          
+            rooster.play();
             //removes active classes from current players current position
             if(currentPlayer === Player1){
               removeClasses(1);
@@ -343,7 +343,7 @@
   
   
           } else if (this.firstChild.src !== currentPlayer.targetPosition().firstChild.src){
-  
+            no.play();
             //changes the current player in case of incorrect guess
             currentPlayer.currentPosition().classList.remove("current-player");
             currentPlayer.currentPosition().classList.add("non-current-player");
@@ -427,6 +427,7 @@
               piece.firstChild.classList.add('hidden1');
             },1000);
             if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
+              rooster.play();
               removeClasses(1);
               currentPlayer.position = currentPlayer.target;
               getTarget();
@@ -440,6 +441,7 @@
               addActiveColorAndCurrentClass(Player1,1);
               currentPlayer.targetPosition().classList.add('player1-target');
             } else {
+              no.play();
               clicksLeft -= 1;
               if(clicksLeft == 0){
                 notifyEndGameFail();
@@ -492,10 +494,15 @@
               piece.classList.add('cover');
               piece.firstChild.classList.add('hidden1');
             },1000);
+            if(this.firstChild.src !== currentPlayer.targetPosition().firstChild.src){
+              no.play();
+            }
             if(this.firstChild.src === currentPlayer.targetPosition().firstChild.src){
+              rooster.play();
               removeClasses(1);
               currentPlayer.position = currentPlayer.target;
               getTarget();
+              
               if(currentPlayer.position == 0 && currentPlayer.target == 1){
                 clearInterval(interval);
                 document.getElementById("timer").style.display = "none";
@@ -532,3 +539,46 @@ newGameButton.addEventListener('click', function(){location.reload()});
 howToPlayButton.addEventListener('click', openModal);
 window.addEventListener('click', closeModal);
 
+var backgroundMusic;
+var muteBtn;
+var no;
+var rooster;
+var muteFxBtn;
+
+function playMusic(){
+  backgroundMusic = new Audio();
+  backgroundMusic.src = "audio/bensound-ukulele.mp3";
+  backgroundMusic.loop = true;
+  backgroundMusic.play();
+  muteBtn = document.getElementById('mute-music');
+  muteBtn.addEventListener('click', mute);
+  function mute(){
+    if(backgroundMusic.muted){
+      backgroundMusic.muted = false;
+    } else {
+      backgroundMusic.muted = true;
+    }
+  }
+}
+
+function playFx(){
+  no = new Audio();
+  no.src="audio/no.mp3";
+  rooster = new Audio();
+  rooster.src="audio/Rooster-noise.mp3";
+  muteFxBtn = document.getElementById('mute-fx');
+  muteFxBtn.addEventListener('click', muteFx);
+  function muteFx(){
+    if(no.muted && rooster.muted){
+      no.muted = false;
+      rooster.muted = false;
+    } else {
+      no.muted = true;
+      rooster.muted = true;
+    }
+  }
+}
+
+
+window.addEventListener('load', playMusic);
+window.addEventListener('load', playFx);
