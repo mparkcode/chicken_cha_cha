@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-sm-7">  
+      <div class="col-xs-7">  
         <div class="gameboard">
           <div class="displayCards" id="square-0"><img src="" alt="" id="img-0" class="img-size"></div>
           <div id="onemove"><div class="displayCards" id="square-1"><img src="" alt="" id="img-8" class="img-size"></div></div>
@@ -56,12 +56,11 @@
           
           
           
-      <div class="col-sm-5">
+      <div class="col-xs-5">
         <div id="info">
-          <div id="paper">
-            <img src="images/blank page.png" id="paper-sheet"></img>
-          </div>
+          <img src="images/paper2.png" id="paper-sheet"></img>
           <div id="life-count">
+            <h2 id="currentPlayerDisplay"></h2>
             <h2 id="p1-life-count"><span id="player1-name">Player 1</span>: <span id="p1lives"></span></h2>
             <h2 id="p2-life-count"><span id="player2-name">Player 2</span>: <span id="p2lives"></span></h2>
             <h2 id="p3-life-count"><span id="player3-name">Player 3</span>: <span id="p3lives"></span></h2>
@@ -69,8 +68,55 @@
             <h2 id="clicks">Clicks Left: <span id="click-counter"></span></h2>
             <h2 id="timer">Time Left: <span id="time-counter"></span></h2>
           </div>
+          <button id="new-game-button">New game</button>
+          <button id="how-to-play-button">How to play</button>
         </div>
       </div>    
+    </div>
+    
+    
+    <div id="how-to-play-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>How to Play</h2>
+            </div>
+            <div class="modal-body">
+                <p class="mb-10">Chicken Cha Cha Cha is a game for 1 - 4 players.</p>
+                <p>For games with 2 or more players the objext is to collect all the lives on the board.</p>
+                <p>Every player starts the game with one life.</p>
+                <p>Every player has a color, either red, blue, green or purple.</p>
+                <p>The piece a player is currently on will have a solid ring of the players color around it.</p>
+                <p>The piece the player has to jump to will have a flashing background of the player's color.</p>
+                <p>Usually this is the next piece to where the player currently is but if another player is in their way then it will be the next available piece.</p>
+                <p>To jump to the flashing 'target' piece the player must find the matching picture of the target with the hidden pictures in the middle of the board.</p>
+                <p>If they make a wrong choice play moves to the next player.</p>
+                <p>When you jump over a player you take all their lives.</p>
+                <p class="mb-10">Even if a player have no lives they can continue playing, the game isn't over until one player has all the lives!</p>
+                <p>For games with just one player the player can pick either a 'time' or 'click' challenge.</p>
+                <p>For both challenges a player can pick either 'easy', 'medium', or 'difficult'.</p>
+                <p>The goal for both challenges is to move around the board one time.</p>
+                <p>In a time challenge the player must move around in a certain amount of time. Easy gives the most amount of time, difficult gives the least!</p>
+                <p>In a click challenge the player must move around in within a set ammount of clicks. Easy gives the most ammount of clicks, difficult the least!</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="multi-player-win-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="multiplayNotifyWinner">How to Play</h2>
+          <button id="new-game-on-win-button">New game</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="single-player-win-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="singleplayNotify">How to Play</h2>
+          <button id="new-game-on-win-button-single">New game</button>
+        </div>
+      </div>
     </div>
 
 
