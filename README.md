@@ -2,7 +2,7 @@
 
 Interactive Frontend Development Project - Code Institute
 
-This is a Javascript single page application game called chicken Cha Cha Cha. It is based on the [board game of the same name](https://www.zoch-verlag.com/en/games/kids/zicke-zacke-huehnerkacke-601121800/) 
+This is a Javascript single page application game called chicken Cha Cha Cha. It is based on the [board game of the same name](https://www.zoch-verlag.com/en/games/kids/zicke-zacke-huehnerkacke-601121800/)  
 The game is intended for children, but can obviously be played by all ages!  
 In the original game, 2-4 players play against each other by trying to take each others lives by moving around the game board.  
 Players move around the game board by matching images around the board with hidden images in the middle of the game board.  
@@ -32,6 +32,10 @@ User requirements are met in the following ways:
 * a player can start a new game at any time
 * Information partaining to lives is on screen during multiplayer games
 * Information partaining to time left or clicks left during single player games is available on screen
+
+### Wireframing
+
+A wireframe was made using the pencil application and can be found in the wireframes folder
 
 ## Technologies Used
 * HTML
