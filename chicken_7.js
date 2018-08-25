@@ -8,18 +8,18 @@ var muteFxBtn;
 function playMusic() {
     backgroundMusic = new Audio();
     backgroundMusic.src = "audio/bensound-ukulele.mp3";
-    backgroundMusic.loop = true;
-    backgroundMusic.play();
+    backgroundMusic.pause();
     muteBtn = document.getElementById('mute-music');
     muteBtn.addEventListener('click', mute);
-
+    
     function mute() {
-        if (backgroundMusic.muted) {
-            backgroundMusic.muted = false;
-            muteBtn.innerHTML = "mute music";
+        if (backgroundMusic.paused == true) {
+            backgroundMusic.play();
+            backgroundMusic.loop = true;
+            muteBtn.innerHTML = "stop music";
         }
         else {
-            backgroundMusic.muted = true;
+            backgroundMusic.pause();
             muteBtn.innerHTML = "play music";
         }
     }
@@ -46,6 +46,7 @@ function playFx() {
         }
     }
 }
+
 
 window.addEventListener('load', playMusic);
 window.addEventListener('load', playFx);
