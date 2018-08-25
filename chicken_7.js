@@ -8,6 +8,7 @@ var muteFxBtn;
 function playMusic() {
     backgroundMusic = new Audio();
     backgroundMusic.src = "audio/bensound-ukulele.mp3";
+    backgroundMusic.volume = 0.5;
     backgroundMusic.pause();
     muteBtn = document.getElementById('mute-music');
     muteBtn.addEventListener('click', mute);
@@ -28,8 +29,10 @@ function playMusic() {
 function playFx() {
     no = new Audio();
     no.src = "audio/no.mp3";
+    no.volume = 0.5;
     rooster = new Audio();
     rooster.src = "audio/Rooster-noise.mp3";
+    rooster.volume = 0.5;
     muteFxBtn = document.getElementById('mute-fx');
     muteFxBtn.addEventListener('click', muteFx);
 
