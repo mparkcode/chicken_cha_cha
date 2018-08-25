@@ -150,12 +150,12 @@ body {
 }
 
 .hidden1 {
-   /*display: none;*/
+   display: none;
 }
 
 .cover {
-   /*background-image: url("images/transparent chicken 7.png");*/
-   /*background-size: cover;*/
+   background-image: url("images/transparent chicken 7.png");
+   background-size: cover;
 }
 
 .img-size {
