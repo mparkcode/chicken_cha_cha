@@ -95,12 +95,12 @@
                 <p>To jump to the flashing 'target' piece the player must find the matching picture of the target with the hidden pictures in the middle of the board.</p>
                 <p>If they make a wrong choice play moves to the next player.</p>
                 <p>When you jump over a player you take all their lives.</p>
-                <p class="mb-10">Even if a player have no lives they can continue playing, the game isn't over until one player has all the lives!</p>
+                <p class="mb-10">Even if a player has no lives they can continue playing, the game isn't over until one player has all the lives!</p>
                 <p>For games with just one player the player can pick either a 'time' or 'click' challenge.</p>
                 <p>For both challenges a player can pick either 'easy', 'medium', or 'difficult'.</p>
                 <p>The goal for both challenges is to move around the board one time.</p>
                 <p>In a time challenge the player must move around in a certain amount of time. Easy gives the most amount of time, difficult gives the least!</p>
-                <p>In a click challenge the player must move around in within a set ammount of clicks. Easy gives the most ammount of clicks, difficult the least!</p>
+                <p>In a click challenge the player must move around within a set amount of clicks. Easy gives the most ammount of clicks, difficult the least!</p>
             </div>
         </div>
     </div>
@@ -121,6 +121,52 @@
           <button class="game-button" id="new-game-on-win-button-single">New game</button>
         </div>
       </div>
+    </div>
+    
+    <div id="simpleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-header">How many players?</h2>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-choice" id="option1">1</h2>
+                <h2 class="modal-choice" id="option2">2</h2>
+                <h2 class="modal-choice" id="option3">3</h2>
+                <h2 class="modal-choice" id="option4">4</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div id="singlePlayerModalGameType" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-header">Choose time or click challenge</h2>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-choice" id="time">Time</h2>
+                <h2 class="modal-choice" id="click">Click</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div id="singlePlayerModalDifficulty" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-header">Choose Difficulty</h2>
+            </div>
+            <div class="modal-body">
+                <h2 class="difficulty-choice" id="easy">Easy</h2>
+                <h2 class="difficulty-choice" id="medium">Medium</h2>
+                <h2 class="difficulty-choice" id="difficult">Difficult</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div id="getPlayerNameModal" class="modal">
+        <div class="modal-content">
+            <input type="text" id="playerName" name="playerName"/>
+            <button onclick="getPlayerName()">Try it</button>
+        </div>
     </div>
 
 

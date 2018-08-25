@@ -150,12 +150,12 @@ body{
 }
 
 .hidden1{
-  display: none;
+  /*display: none;*/
 }
 
 .cover{
-  background-image: url("images/transparent chicken 7.png");
-  background-size: cover;
+  /*background-image: url("images/transparent chicken 7.png");*/
+  /*background-size: cover;*/
 }
 
 .img-size{
@@ -437,6 +437,26 @@ body{
     margin: 2% auto;
     border-bottom: none !important;
     text-align: center;
+}
+
+.modal-choice{
+    display: inline;
+    margin: 0 10%;
+    margin-bottom: 5%;
+    font-size: 3em;
+    color: blue;
+}
+
+.modal-choice:hover, .difficulty-choice:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.difficulty-choice{
+    margin: 0 auto;
+    margin-bottom: 5%;
+    font-size: 3em;
+    color: blue;
 }
 
 

@@ -1,17 +1,109 @@
 
+//---------------------opens modal to choose number of players on page load
+window.onload = openModal;
+//---------------------Function to open modal
+function openModal(){
+    modal.style.display='block';
+}
 
-  var images = ["images/fried_egg.png",
-                "images/baby_parrot.png",
-                "images/caterpillar.png",
-                "images/cute_flowers.png",
-                "images/cute_worm.png",
-                "images/easter_bunny.png",
-                "images/egg_cup.png",
-                "images/egg_nest.png",
-                "images/feather.png",
-                "images/hedgehog.png",
-                "images/newborn_chicken.png",
-                "images/snail.png"];
+//---------------------variables to receive values for game
+var numPlayers;
+var gameType;
+var difficulty;
+
+
+//---------------------Get the modal element
+var modal = document.getElementById('simpleModal');
+
+//---------------------Get the single player game type modal
+var singlePlayerModalGameType = document.getElementById('singlePlayerModalGameType');
+
+//---------------------Get the single player difficulty modal
+var singlePlayerModalDifficulty = document.getElementById('singlePlayerModalDifficulty');
+
+//---------------------Get player name modal
+var getPlayerNameModal = document.getElementById('getPlayerNameModal');
+
+//---------------------Get the single player option
+var singlePlayer = document.getElementById('option1');
+
+//---------------------Get Multiplayer options
+var twoPlayer = document.getElementById('option2');
+var threePlayer = document.getElementById('option3');
+var fourPlayer = document.getElementById('option4');
+
+//---------------------Get game type options for single player game
+var timeOption = document.getElementById('time');
+var clickOption = document.getElementById('click');
+
+//---------------------Get the difficulty option for single player game
+var easyOption = document.getElementById('easy');
+var mediumOption = document.getElementById('medium');
+var difficultOption = document.getElementById('difficult');
+
+//---------------------Listen for single player option
+singlePlayer.addEventListener('click', openSinglePlayerModalGameType);
+
+//---------------------Listen for gametype choice
+timeOption.addEventListener('click', function(){setGameType("time")});
+clickOption.addEventListener('click', function(){setGameType("click")});
+
+//---------------------Listen for difficulty choice
+easyOption.addEventListener('click', function(){setDifficulty("easy")});
+mediumOption.addEventListener('click', function(){setDifficulty("medium")});
+difficultOption.addEventListener('click', function(){setDifficulty("difficult")});
+
+//---------------------Listen for multi player option
+twoPlayer.addEventListener('click', function(){openMultiPlayerModal(2)});
+threePlayer.addEventListener('click', function(){openMultiPlayerModal(3)});
+fourPlayer.addEventListener('click', function(){openMultiPlayerModal(4)});
+
+//---------------------Function to open single player modal
+function openSinglePlayerModalGameType(){
+    modal.style.display='none';
+    numPlayers = 1;
+    singlePlayerModalGameType.style.display='block';
+}
+
+//---------------------Function to get game type for single player
+function setGameType(type){
+    singlePlayerModalGameType.style.display='none';
+    gameType = type;
+    singlePlayerModalDifficulty.style.display='block';
+}
+
+//---------------------Function to set difficulty for single player
+function setDifficulty(difficultyLevel){
+    singlePlayerModalGameType.style.display='none';
+    difficulty=difficultyLevel;
+    if (difficulty != undefined){
+        singlePlayerModalDifficulty.style.display='none';
+    }
+}
+
+//---------------------Function to set player numbers for multiplayer
+function openMultiPlayerModal(num){
+    modal.style.display='none';
+    numPlayers=num;
+    gameType="";
+    difficulty="";
+    // getPlayerNameModal.style.display="block";
+}
+
+var images = [
+    "images/fried_egg.png",
+    "images/baby_parrot.png",
+    "images/caterpillar.png",
+    "images/cute_flowers.png",
+    "images/cute_worm.png",
+    "images/easter_bunny.png",
+    "images/egg_cup.png",
+    "images/egg_nest.png",
+    "images/feather.png",
+    "images/hedgehog.png",
+    "images/newborn_chicken.png",
+    "images/snail.png"
+];
   
   var images2 = ["images/fried_egg.png",
                 "images/baby_parrot.png",
@@ -92,10 +184,24 @@
   
   
   //------------------------Asks for how many players and creates starting positions and array of non current players
+  function checkNumPlayers() {
+    if(numPlayers == undefined) {
+       window.setTimeout(checkNumPlayers, 100); /* this checks the flag every 100 milliseconds*/
+    } else {
+      function checkGameType(){
+        if(gameType == undefined){
+          window.setTimeout(checkGameType, 100);
+        } else {
+          function checkDifficulty(){
+            if(difficulty == undefined){
+              window.setTimeout(checkGameType, 100);
+            } else {
+          
+   
   
+  // var playerNumPrompt = prompt("Please enter number of players (1,2,3 or 4)");
+  // var numPlayers = parseInt(playerNumPrompt);
   
-  var playerNumPrompt = prompt("Please enter number of players (1,2,3 or 4)");
-  var numPlayers = parseInt(playerNumPrompt);
   var nonCurrentPlayers = [Player1];
   
   
@@ -411,10 +517,10 @@
       var newGameOnWinButtonSingle = document.getElementById("new-game-on-win-button-single");
       newGameOnWinButtonSingle.addEventListener('click', function(){location.reload()});
     }
-    var gameType = prompt("Choose your challenge, enter 'time' or 'click'");
+    // var gameType = prompt("Choose your challenge, enter 'time' or 'click'");
     if(gameType == "click"){
       document.getElementById("timer").style.display="none";
-      var difficulty = prompt("Choose a difficulty, enter 'easy', 'medium' or 'difficult'");
+      // var difficulty = prompt("Choose a difficulty, enter 'easy', 'medium' or 'difficult'");
       var clicksLeft;
       if(difficulty == "easy"){
         clicksLeft = 120;
@@ -470,7 +576,7 @@
     }
     if(gameType == "time"){
       document.getElementById("clicks").style.display="none";
-      var difficulty = prompt("Enter difficulty");
+      // var difficulty = prompt("Choose a difficulty, enter 'easy', 'medium' or 'difficult'");
       var timeLeft;
       if(difficulty == "easy"){
         timeLeft = 180;
@@ -531,13 +637,23 @@
       }
     }
   }
+  }
+  }
+  checkDifficulty();
+    }
+  }
+  checkGameType();
+    }
+    
+  }
+checkNumPlayers();
 
 
 var newGameButton = document.getElementById("new-game-button");
 var howToPlayButton = document.getElementById("how-to-play-button");
 var howToPlayModal = document.getElementById("how-to-play-modal");
 
-function openModal(){
+function openHowToPlayModal(){
   howToPlayModal.style.display = 'block';
 }
 
@@ -548,7 +664,7 @@ function closeModal(e){
 }
 
 newGameButton.addEventListener('click', function(){location.reload()});
-howToPlayButton.addEventListener('click', openModal);
+howToPlayButton.addEventListener('click', openHowToPlayModal);
 window.addEventListener('click', closeModal);
 
 var backgroundMusic;
@@ -594,6 +710,7 @@ function playFx(){
     }
   }
 }
+
 
 
 window.addEventListener('load', playMusic);
