@@ -31,10 +31,10 @@ body {
 
 #currentPlayerDisplay {
    position: absolute;
-   margin-top: 35%;
+   margin-top: 30%;
    left: 10%;
    font-family: 'Indie Flower', cursive;
-   font-size: 4em;
+   font-size: 3em;
    color: red;
 }
 
@@ -70,6 +70,13 @@ body {
 #timer {
    font-family: 'Indie Flower', cursive;
    color: red;
+}
+
+#info-angry-chicken{
+   position: absolute;
+   width: 25%;
+   margin-top: 55%;
+   left: 43%;
 }
 
 
@@ -459,8 +466,8 @@ body {
 
 .modal-chicken {
    top: 2%;
-   left: 80%;
-   width: 12%;
+   left: 82%;
+   width: 10%;
    position: absolute;
 }
 
