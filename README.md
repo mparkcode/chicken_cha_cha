@@ -2,14 +2,14 @@
 
 Interactive Frontend Development Project - Code Institute
 
-This is a Javascript single page application game called chicken Cha Cha Cha. It is based on the [board game of the same name](https://www.zoch-verlag.com/en/games/kids/zicke-zacke-huehnerkacke-601121800/)  
+This is a Javascript single page application game called chicken Cha Cha Cha. It is based on the [board game of the same name](https://boardgamegeek.com/boardgame/3570/chicken-cha-cha-cha)  
 The game is intended for children, but can obviously be played by all ages!  
 In the original game, 2-4 players play against each other by trying to take each others lives by moving around the game board.  
 Players move around the game board by matching images around the board with hidden images in the middle of the game board.  
 As well as recreating the rules from the original board game for multiple players, this version also includes a single player version.  
 
 
-A live version is hosted [here](https://mparkcode.github.io/chicken_cha_cha/)  
+### A live version is hosted [here](https://mparkcode.github.io/chicken_cha_cha/)  
 
 ## UX
 
@@ -57,6 +57,8 @@ A wireframe was made using the pencil application and can be found in the wirefr
 ### Features left to implement
 * modals for entering players names as opposed to prompt boxes
 * new game button to start new game without reloading page - presently the new game button simply reloads page
+* I would like to design the game pieces as octagons for the hiddens pieces and eggs for the visible pieces - to match the original board game
+* I would also like to incorporate more audio into the game, maybe ambient farm noises playing in the background.
 
 ## Testing
 The site was tested on 21" monitors, 15" and 13" laptop screens and on an iPhone SE and iPhone 8 screen to test responsiveness.  
@@ -68,7 +70,7 @@ The background image is changed when viewing on smaller devices. The original ki
 My original intention was to have background music autoplay on load, however due to new [browser policies such as on chrome](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes), this proved difficult.  
 My solution was to give the player the choice to have music or not, they can turn the music on once the game starts if they choose.   
 
-User testing was done to ensure:
+Manual testing was done to ensure:
 * The game plays as intended
 * Appropriate win/loose notifications show up
 * appropriate information is displayed on the game information sheet
