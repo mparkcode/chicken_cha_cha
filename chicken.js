@@ -147,6 +147,12 @@ function openMultiPlayerModal(num) {
     // getPlayerNameModal.style.display="block";
 }
 
+//--------------------------Display random chicken on game sheet on page load 
+var chickens=["chicken angry.png", "chicken runing.png", "chicken surprised.png", "chicken thumbsup.png", "chicken victory.png"];
+var displayChicken = document.getElementById("info-angry-chicken");
+var randomchicken=Math.floor(Math.random()*5);
+displayChicken.src = "images/" + chickens[randomchicken];
+
 //---------------------Game piece images
 var images = [
     "images/fried_egg.png",
