@@ -96,5 +96,6 @@ To run this site locally, in your terminal enter: git clone https://github.com/m
 * Fonts used were obtained from Google Fonts
 
 ### Acknowledgements
+klaus zoch - The creator of the original wonderful game  
 Code for shuffling an array came from [stackoverflow](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array)  
-understanding of how to implement modals came from [this tutorial by Traversy Media](https://www.youtube.com/watch?v=6ophW7Ask_0)  
+understanding of how to implement modals came from [this tutorial by Traversy Media](https://www.youtube.com/watch?v=6ophW7Ask_0) 
