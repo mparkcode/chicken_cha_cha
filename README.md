@@ -8,6 +8,7 @@ In the original game, 2-4 players play against each other by trying to take each
 Players move around the game board by matching images around the board with hidden images in the middle of the game board.  
 As well as recreating the rules from the original board game for multiple players, this version also includes a single player version.  
 
+### This project is for educational purposes only
 
 ### A live version is hosted [here](https://mparkcode.github.io/chicken_cha_cha/)  
 
