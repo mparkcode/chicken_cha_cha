@@ -358,12 +358,11 @@ body {
 /*--------------------------------players current and target positions on board*/
 
 .player1 {
-   border: 5px solid red;
+   border: 10px solid red;
 }
 
 .player1-active {
-   border: 5px solid red;
-   background: pink;
+   border: 10px solid red;
 }
 
 .player1-target {
@@ -372,12 +371,11 @@ body {
 }
 
 .player2 {
-   border: 5px solid blue;
+   border: 10px solid blue;
 }
 
 .player2-active {
-   border: 5px solid blue;
-   background: #87cefa;
+   border: 10px solid blue;
 }
 
 .player2-target {
@@ -386,12 +384,11 @@ body {
 }
 
 .player3 {
-   border: 5px solid green;
+   border: 10px solid green;
 }
 
 .player3-active {
-   border: 5px solid green;
-   background: #b3ffb3;
+   border: 10px solid green;
 }
 
 .player3-target {
@@ -400,12 +397,11 @@ body {
 }
 
 .player4 {
-   border: 5px solid purple;
+   border: 10px solid purple;
 }
 
 .player4-active {
-   border: 5px solid purple;
-   background: #ff80ff;
+   border: 10px solid purple;
 }
 
 .player4-target {
