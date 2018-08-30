@@ -22,6 +22,8 @@ The score sheet also contains controls to play a new game, play and pause the mu
 Modals are employed at the start of the game for picking the type of game to play.  
 Background images and sound effects are also used in the game to enhance the childlike feeling of the app.  
 
+### No Template was used.  
+
 User requirements are met in the following ways:  
 * Players can choose the type of game to play at the start of the game (single or multiple).
 * In single player games the player can choose what type of game they want to play, and difficulty level.
