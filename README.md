@@ -62,6 +62,7 @@ A wireframe was made using the pencil application and can be found in the wirefr
 ### Features left to implement
 * Modals for entering players names as opposed to prompt boxes.
 * New game button to start new game without reloading page - presently the new game button simply reloads the page.
+* Some users have noted that upon first playing the game it's a little tricky to differentiate what piece to look for, the piece matching that where the player currently is, or where they are supposed to move. While I have explained in the rules how to play, I would like to find some sort of visual clue to the player to make it intuitive to know what piece to match.
 * I would like to design the game pieces as octagons for the hiddens pieces and eggs for the visible pieces - to match the original board game.
 * I would like to improve the styling on the modals, presently they are a bit bland.
 * I would also like to incorporate more audio into the game, maybe ambient farm noises playing in the background.
