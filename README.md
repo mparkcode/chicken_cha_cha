@@ -62,7 +62,7 @@ A wireframe was made using the pencil application and can be found in the wirefr
 ### Features left to implement
 * Modals for entering players names as opposed to prompt boxes.
 * New game button to start new game without reloading page - presently the new game button simply reloads the page.
-* Some users have noted that upon first playing the game it's a little tricky to differentiate what piece to look for, the piece matching that where the player currently is, or where they are supposed to move. While I have explained in the rules how to play, I would like to find some sort of visual clue to the player to make it intuitive to know what piece to match.
+* Some users have noted that, upon first playing the game, it's a little tricky to differentiate what piece to look for; the piece matching that where the player currently is, or the piece with the flashing background (where they are supposed to move). While I have explained in the rules how to play, I would like to provide some sort of visual clue to the player to make it intuitive to know what piece to match.
 * I would like to design the game pieces as octagons for the hiddens pieces and eggs for the visible pieces - to match the original board game.
 * I would like to improve the styling on the modals, presently they are a bit bland.
 * I would also like to incorporate more audio into the game, maybe ambient farm noises playing in the background.
@@ -84,6 +84,14 @@ Manual testing was done to ensure:
 * Modals work correctly.
 * The controls provided to the player (new game buttons, audio control buttons, how to play button) work correctly.
 * Many tests to ensure the game is fun to play!
+
+## Issues
+I would like to spend time refactoring the code.  
+I feel in its current state, though the game works, the code is needlessly long and complex.  
+I think the opportunity is there to simplify it and wrap all the game mechanics in a function so that the new game button will be able to start a new game without having to reload the page.  
+This would also help with an audio issue. Currently if the player has the effects set to mute and they click on a new game, the reloaded page will automatically set the effects to play.  
+I would like to have it so that the users audio settings persist when starting a new game.  
+
 
 ## Deployment
 The site is hosted on github pages.  
