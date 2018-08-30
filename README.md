@@ -2,10 +2,10 @@
 
 Interactive Frontend Development Project - Code Institute
 
-This is a Javascript single page application game called chicken Cha Cha Cha. It is based on the [board game of the same name](https://boardgamegeek.com/boardgame/3570/chicken-cha-cha-cha)  
+Chicken Cha Cha Cha is a memory game designed for children and built with Javascript. It is based on the [board game of the same name](https://boardgamegeek.com/boardgame/3570/chicken-cha-cha-cha)  
 The game is intended for children, but can obviously be played by all ages!  
-In the original game, 2-4 players play against each other by trying to take each others lives by moving around the game board.  
-Players move around the game board by matching images around the board with hidden images in the middle of the game board.  
+In the original game, 2-4 players play against each other by trying to take each others lives while moving around the game board.  
+Players move around the game board by matching images with hidden images in the middle of the game board.  As such it is a memory game.  
 As well as recreating the rules from the original board game for multiple players, this version also includes a single player version.  
 
 ### This project is for educational purposes only
@@ -23,16 +23,19 @@ Modals are employed at the start of the game for picking the type of game to pla
 Background images and sound effects are also used in the game to enhance the childlike feeling of the app.  
 
 User requirements are met in the following ways:  
-* Players can choose the type of game to play at the start of the game (single or multiple)
-* In single player games the player can choose type of game and difficulty level
-* In multiplayer games players can input their names through prompt boxes
-* When a player wins in a multi player game a modal appears congratulating the player by name, the modal also contains a new game button
-* When a player wins or loses a single player game a modal appears with an appropriate message and a new game button
-* sound controls are available to mute/unmute music and effects
-* A player can view the rules on how to play at any time
-* a player can start a new game at any time
-* Information partaining to lives is on screen during multiplayer games
-* Information partaining to time left or clicks left during single player games is available on screen
+* Players can choose the type of game to play at the start of the game (single or multiple).
+* In single player games the player can choose what type of game they want to play, and difficulty level.
+* Single player options are:
+    * A click challenge where the player must move around the board within a certain amount of clicks.
+    * A time challenge where the player must move around the board before the time runs out.
+* In multiplayer games players can input their names through prompt boxes.
+* When a player wins in a multi player game a modal appears congratulating the player by name, the modal also contains a new game button.
+* When a player wins or loses a single player game a modal appears with an appropriate message and a new game button.
+* sound controls are available to mute/unmute music and effects.
+* A player can view the rules on how to play at any time.
+* A player can start a new game at any time.
+* Information partaining to lives is on screen during multiplayer games.
+* Information partaining to time left or clicks left during single player games is available on screen.
 
 ### Wireframing
 
@@ -48,17 +51,19 @@ A wireframe was made using the pencil application and can be found in the wirefr
 ## Features
 
 ### Existing Features
-* new game button
-* mute/unmute buttons for audio
-* modal for information on how to play
-* information relevant to the game is available
-* start of game modals to easily choose the type of game to play
-* ability to enter players names in multiplayer games
+* Various game options.
+* New game button.
+* Mute/unmute buttons for audio.
+* Modal for information on how to play.
+* Information relevant to the game is available.
+* Start of game modals to easily choose the type of game to play.
+* Ability to enter players names in multiplayer games.
 
 ### Features left to implement
-* modals for entering players names as opposed to prompt boxes
-* new game button to start new game without reloading page - presently the new game button simply reloads page
-* I would like to design the game pieces as octagons for the hiddens pieces and eggs for the visible pieces - to match the original board game
+* Modals for entering players names as opposed to prompt boxes.
+* New game button to start new game without reloading page - presently the new game button simply reloads the page.
+* I would like to design the game pieces as octagons for the hiddens pieces and eggs for the visible pieces - to match the original board game.
+* I would like to improve the styling on the modals, presently they are a bit bland.
 * I would also like to incorporate more audio into the game, maybe ambient farm noises playing in the background.
 
 ## Testing
@@ -72,11 +77,11 @@ My original intention was to have background music autoplay on load, however due
 My solution was to give the player the choice to have music or not, they can turn the music on once the game starts if they choose.   
 
 Manual testing was done to ensure:
-* The game plays as intended
-* Appropriate win/loose notifications show up
-* appropriate information is displayed on the game information sheet
-* modals work correctly
-* the controls provided to the player (new game buttons, audio control buttons, how to play button) work correctly
+* The game plays as intended.
+* Appropriate win/loose notifications show up.
+* Appropriate information is displayed on the game information sheet.
+* Modals work correctly.
+* The controls provided to the player (new game buttons, audio control buttons, how to play button) work correctly.
 * Many tests to ensure the game is fun to play!
 
 ## Deployment
@@ -89,13 +94,13 @@ To run this site locally, in your terminal enter: git clone https://github.com/m
 ## Credits
 
 ### Media
-* Background images used were obtained from Pexels and google images
-* images were obtained from google images and png tree
-* sound effects were obtained from orangefreesounds.com and soundbible.com
-* background music came from bensound.com
-* Fonts used were obtained from Google Fonts
+* Background images used were obtained from Pexels and google images.
+* Images were obtained from google images and png tree.
+* Sound effects were obtained from orangefreesounds.com and soundbible.com
+* Background music came from bensound.com
+* Fonts used were obtained from Google Fonts.
 
 ### Acknowledgements
-klaus zoch - The creator of the original wonderful game  
-Code for shuffling an array came from [stackoverflow](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array)  
-understanding of how to implement modals came from [this tutorial by Traversy Media](https://www.youtube.com/watch?v=6ophW7Ask_0) 
+Klaus Zoch - The creator of the original wonderful game.  
+Code for shuffling an array came from [stackoverflow](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array).  
+Understanding of how to implement modals came from [this tutorial by Traversy Media](https://www.youtube.com/watch?v=6ophW7Ask_0). 
